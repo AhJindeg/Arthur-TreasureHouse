@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>平面定位图</title>
+    <script src="vue.js"></script>
+    <style></style>
+  </head>
+  <body style="background: burlywood">
+    <!-- 使用定位实现拖拽功能 -->
+    <!-- 等待 转换为对应的空间坐标 -->
+    <!-- 使用放大缩小功能实现地图的缩放功能，将div内的背景图放大缩小，同时计算大小比例，使用溢出隐藏实现该功能 -->
+    <div id="App" style="width: 800px; height: 800px; margin: 50px; position: absolute; background: rgb(175, 122, 122)">
+      <div @mousedown="move" style="position: relative; color: rgb(61, 44, 44)">wode</div>
+      <div @mousedown="move" style="position: relative; color: rgb(61, 44, 44)">wode</div>
+      <div @mousedown="move" style="position: relative; color: rgb(61, 44, 44)">wode</div>
+    </div>
+  </body>
+  <script>
+    // 1. 实现拖拽效果
+    // 2. 实现地图放大效果 / 原定位点实现同样放大效果
+    new Vue({
+      // 选项
+      el: "#App",
+      data: {},
+      methods: {
+        // 点击和拖拽触发
+        move(e) {
+          // params
+          console.log(e, "e")
+          // 获取元素html
+          let odiv = e.target
+          // 算出鼠标相对元素的位置
+          let disX = e.clientX - odiv.offsetLeft
+          let disY = e.clientY - odiv.offsetTop
+          console.log(disX, "disX")
+          console.log(disY, "disY")
+
+          document.onmousemove = e => {
+            // 鼠标按下并移动的事件
+            // 用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+
+            let left = e.clientX - disX
+            let top = e.clientY - disY
+            console.log(left, "left")
+            console.log(top, "top")
+            // 绑定元素位置到positionX和positionY上面
+            this.positionX = top
+            this.positionY = left
+
+            // 移动当前元素
+            // 根据定位的 relative ，控制 left 和 top 的像素
+            // 后续转化为比例%定位可以加入空间属性中
+            // 定位功能实现了拖拽效果 但是会拖拽出盒子之外
+            // 应该限制拖拽的位置
+            odiv.style.left = left + "px"
+            odiv.style.top = top + "px"
+          }
+          document.onmouseup = e => {
+            document.onmousemove = null
+            document.onmouseup = null
+          }
+        },
+      },
+      mounted() {},
+      computed: {},
+      // methods: {
+      //   handleScroll(e) {
+      //     // 使用_this
+      //     let _this = this
+      //     _this.down_xy = _this.windowToCanvas(e.clientX, e.clientY)
+      //     let newDown_xy = {
+      //       x: ((_this.down_xy.x - _this.imgX - _this.b) / _this.zoomtimes / _this.ts).toFixed(2),
+      //       y: ((_this.down_xy.y - _this.imgY - _this.a) / _this.zoomtimes / _this.ts).toFixed(2),
+      //     }
+      //     if (e.deltaY > 0 && _this.zoomtimes > 1 && _this.zoomtimes < 1.1) {
+      //       _this.zoomtimes = 1
+      //       _this.imgX = (1 - _this.zoomtimes * _this.ts) * newDown_xy.x + (_this.down_xy.x - newDown_xy.x) - _this.b
+      //       _this.imgY = (1 - _this.zoomtimes * _this.ts) * newDown_xy.y + (_this.down_xy.y - newDown_xy.y) - _this.a
+      //     } else if (e.deltaY > 0 && _this.zoomtimes > 1) {
+      //       _this.zoomtimes = (_this.zoomtimes * 10 - 1) / 10
+      //       _this.imgX = (1 - _this.zoomtimes * _this.ts) * newDown_xy.x + (_this.down_xy.x - newDown_xy.x) - _this.b
+      //       _this.imgY = (1 - _this.zoomtimes * _this.ts) * newDown_xy.y + (_this.down_xy.y - newDown_xy.y) - _this.a
+      //     } else if (e.deltaY < 0) {
+      //       _this.zoomtimes = (_this.zoomtimes * 10 + 1) / 10
+      //       _this.imgX = (1 - _this.zoomtimes * _this.ts) * newDown_xy.x + (_this.down_xy.x - newDown_xy.x) - _this.b
+      //       // (1 - _this.zoomtimes) * _this.down_xy.x - _this.b
+
+      //       _this.imgY = (1 - _this.zoomtimes * _this.ts) * newDown_xy.y + (_this.down_xy.y - newDown_xy.y) - _this.a
+      //       // (1 - _this.zoomtimes ) * _this.down_xy.y - _this.a
+      //     }
+
+      //     this.$store.state.move_item = ""
+      //     e.preventDefault()
+      //     console.info(_this.imgX, _this.imgY, "sdsdsdsdsd")
+      //   },
+      //   windowToCanvas(x, y) {
+      //     let mycanvas = document.getElementById("canvas_img")
+      //     let box = mycanvas.getBoundingClientRect() //这个方法返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离
+
+      //     return {
+      //       x: x - box.left - (box.width - mycanvas.width) / 2,
+      //       y: y - box.top - (box.height - mycanvas.height) / 2,
+      //     }
+      //   },
+      // },
+    })
+  </script>
+  <!-- 
+    1. 设备表进入只能编辑当前的空间属性
+    2. 7楼进入可以更改所有的空间属性
+   -->
+</html>
+<!-- 通过滚轮事件 -->
+<!-- 每次放大都触发计算事件进行计算 -->
+<!-- 使用一个大的div再套一层 溢出隐藏元素 -->
+<!-- 以鼠标的点为圆心放大缩小 -->

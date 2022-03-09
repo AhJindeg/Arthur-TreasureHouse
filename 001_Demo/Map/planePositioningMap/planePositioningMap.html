@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>平面定位图</title>
+    <script src="vue.js"></script>
+    <style>
+      #App > .huabu {
+        background: url("./Map.png") no-repeat;
+        background-size: 100%;
+        margin: 30px;
+        position: relative;
+        display: inline-block;
+      }
+      .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgb(160, 214, 99);
+        position: absolute;
+      }
+      #App > span {
+        position: absolute;
+        top: 100px;
+      }
+      #App > span > span {
+        display: block;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="App">
+      <div ref="huabu" class="huabu" :style="{ width: huabuW + 'px',height: huabuH + 'px'}">
+        <div class="dot" v-for="(item,index) in docMapArr" :key="index" :style="{ top: item.top + '%', left: item.left + '%' }"></div>
+      </div>
+      <span>
+        <span>
+          左上角坐标：
+          <input type="text" v-model="initialPosition[0]" />
+        </span>
+        <span>
+          右上角坐标：
+          <input type="text" v-model=" initialPosition[1] " />
+        </span>
+        <span>
+          左下角坐标：
+          <input type="text" v-model=" initialPosition[2]" />
+        </span>
+        <span>
+          右下角坐标：
+          <input type="text" v-model=" initialPosition[3]" />
+        </span>
+      </span>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      // 选项
+      el: "#App",
+      data: {
+        // 角度
+        angle: 0,
+        // 元素的宽
+        huabuW: 1117,
+        // 元素的高
+        huabuH: 722,
+        // 传输的纬度
+        latitudeAndLongitude: [
+          {
+            latitude: 112.935742,
+            Longitude: 33.069178,
+          },
+          {
+            latitude: 112.937555,
+            Longitude: 33.069349,
+          },
+          {
+            latitude: 112.940076,
+            Longitude: 33.068612,
+          },
+        ],
+        // 初始的纬度
+        initialPosition: ["112.933579, 33.071381", "112.941776, 33.071381", "112.933579, 33.067011", "112.933579, 33.067011"],
+      },
+      methods: {},
+      // 获取元素的宽高
+      mounted() {
+        this.$nextTick(() => {
+          this.huabuW = this.$refs.huabu.clientWidth
+          this.huabuH = this.$refs.huabu.clientHeight
+        })
+      },
+      computed: {
+        docMapArr() {
+          // 左上角经度
+          const leftTop1 = parseFloat(this.initialPosition[0].split(",")[0])
+          // 右上角经度
+          const rightTop1 = parseFloat(this.initialPosition[1].split(",")[0])
+          // 左上角纬度
+          const leftTop2 = parseFloat(this.initialPosition[0].split(",")[1])
+          // 左下角纬度
+          const letbottom2 = parseFloat(this.initialPosition[3].split(",")[1])
+          // 元素经度值
+          let topWidth = Math.abs(leftTop1 - rightTop1)
+          // 元素纬度值
+          let leftHeight = Math.abs(leftTop2 - letbottom2)
+          // 点位数组
+          let docMapArr = []
+          // 点位
+          let docMap = this.latitudeAndLongitude.forEach(ele => {
+            // 经度位
+            let x = Math.abs(ele.latitude - leftTop1) / topWidth
+            // 纬度位
+            let y = Math.abs(ele.Longitude - leftTop2) / leftHeight
+            // 公式
+            let angle = Math.abs(Math.cos((this.angle * Math.PI) / 180 || 0))
+            // 左点位值
+            let xleft = (x * angle * 100).toFixed(2)
+            // 上点位值
+            let ytop = (y * angle * 100).toFixed(2)
+            // 判断占比
+            if (xleft <= 100 && ytop <= 100) {
+              //  push 进点位数组
+              docMapArr.push({
+                left: xleft,
+                top: ytop,
+              })
+            }
+          })
+          // 返回点位数组
+          return docMapArr
+        },
+      },
+    })
+  </script>
+</html>
