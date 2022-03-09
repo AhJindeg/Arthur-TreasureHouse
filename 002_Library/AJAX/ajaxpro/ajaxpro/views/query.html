@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>查询单一用户</title>
+    <style>
+      *{margin: 0; padding: 0;}
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; margin-top: 100px;">查询单一用户(通过名字查询)</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="height: 40px; width: 400px; text-align: center; margin: 0 auto;">
+      <input type="text" placeholder="输入用户姓名" name="" id="username" style="width: 300px; height: 30px;">
+      <button id="btn" style="width: 70px; height: 36px;">查询</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="width: 390px; margin: 0 auto;">
+      <table align="center" border="1" style="text-align: center;">
+        <thead>
+          <tr>
+            <th style="width: 50px;">序号</th>
+            <th style="width: 90px;">用户名</th>
+            <th style="width: 150px;">电话号码</th>
+            <th style="width: 100px;">是否会员</th>
+          </tr>
+        </thead>
+        <tbody id="box">
+          
+        </tbody>
+      </table>
+    </div>
+    <script>
+      // 1. 获取元素
+      var username = document.getElementById('username');
+      var btn = document.getElementById('btn');
+      var box = document.getElementById('box');
+      // 2. 点击事件
+      btn.onclick = function(){
+        // 收集用户数据
+        var unameval = username.value;
+        // 调用ajax传参
+        ajax(unameval);
+      };
+      // 3. ajax函数
+      function ajax(n){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState == 4){
+            if(xhr.status >= 200 && xhr.status < 300){
+              console.log(xhr.responseText);
+              var result = JSON.parse(xhr.responseText);
+              if(result.code == 1){
+                // 成功后，只需要在页面上把信息信息显示出来
+                show(result.data);
+              }else{
+                alert(result.msg);
+              };
+            };
+          };
+        };
+        xhr.open('GET',`/admin/find?uname=${n}`,true);
+        xhr.send();
+      };
+
+      //4.show函数
+      function show(arr){
+        var str='';
+        for(var i =0;i<arr.length;i++){
+          str +=
+          `<tr>
+          <td>${arr[i].u_id}</td>
+          <td>${arr[i].u_names}</td>
+          <td>${arr[i].u_phone}</td>
+          <td>${arr[i].u_member}</td>
+        </tr>`
+        }
+        box.innerHTML = str;
+      }
+    </script>
+  </body>
+</html>
