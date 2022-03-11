@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="box"
+      style="width: 200px; height: 200px; border: 1px solid red"
+    ></div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 单击事件 jqclick
+      $("#box").click(function (e) {
+        e.preventDefault()
+        // 设置盒子的内容
+        $(this).html("你单击了一下！")
+      })
+
+      // 双击事件 dblclick
+      $("#box").dblclick(function () {
+        $(this).html("你双击了一下！")
+      })
+
+      // 鼠标事件 jqmouseenter
+      $("#box").mouseenter(function () {
+        $(this).html("鼠标划入")
+        $(this).css("background-color", "orange")
+      })
+
+      // 鼠标移出 jqmouseleave
+      $("#box").mouseleave(function () {
+        // 链式写法
+        $(this).html("鼠标出去了").css("background-color", "#ffffff")
+      })
+
+      // 鼠标事件合写 移入+移出 --- hover
+      // hover(进入时触发，移出时触发)
+      $("#box").hover(
+        function () {
+          // over
+          $(this).css("border-radius", "10px")
+        },
+        function () {
+          // out
+          $(this).css("border-radius", "1px")
+        }
+      )
+    </script>
+    
+      
+  </body>
+</html>

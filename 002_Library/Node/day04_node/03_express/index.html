@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>百度首页</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*输入框*/
+			.sousuo{
+				width: 850px;
+				height: 60px;
+				margin: 0 auto;
+				margin-top: 200px;
+			}
+			#shuru{
+				width: 696px;
+				height: 50px;
+				border-radius: 5px 0 0 5px;
+				border: 2px solid #c4c7ce;
+				border-right: none;
+			}
+			#tijiao{
+				width: 150px;
+				height: 54px;
+				outline: none;
+				position: absolute;
+				background: #4e6ef2;
+				color: #ffffff;
+				font-size: 22px;
+				border: none;
+				border-radius: 0 5px 5px 0;
+			}
+		</style>
+	</head>
+	<body>
+			<form action="/mysearch" method="get" name="AhJindeg">
+				<!--搜索框-->
+				<div class="sousuo">
+					<input type="text" name="SS" id="shuru" />
+					<input type="submit" value="搜   索" id="tijiao">
+				</div>
+			</form>
+	</body>
+</html>

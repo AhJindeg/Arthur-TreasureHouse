@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,oBAAsB;EACpB,gBAAgB,EAAE,IAAI;;AADxB,oBAAsB;EACpB,gBAAgB,EAAE,IAAI;;AADxB,oBAAsB;EACpB,gBAAgB,EAAE,IAAI;;AADxB,oBAAsB;EACpB,gBAAgB,EAAE,IAAI;;AADxB,oBAAsB;EACpB,gBAAgB,EAAE,IAAI",
+"sources": ["../scss/for.scss"],
+"names": [],
+"file": "for.css"
+}

@@ -1,0 +1,68 @@
+// 声明混合指令
+@mixin color{
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+// @include 引用混合指令的名字，就可以使用混合指令中的样式
+.d1{
+  @include color;
+  background-color: green;
+}
+.d2{
+  @include color;
+  background-color: yellow;
+}
+// ---------------------------------
+@mixin box($a,$b) {
+  width: $a;
+  height: $b;
+  background-color: red;
+}
+.d3{
+  @include box(200px,30px);
+}
+.d4{
+  @include box(120px,80px);
+}
+// --------------------------------------------
+@mixin chuizhi($x,$y){
+  width: $x;
+  height: $y;
+  background-color: red;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -($x)/2;
+  margin-left: -($y)/2;
+}
+.baba{
+  width: 400px;
+  height: 400px;
+  background-color: royalblue;
+  &{
+    position: relative;
+  }
+  .erzi{
+  @include chuizhi(200px, 100px)
+  }
+}
+// -------------------------------------
+@mixin btn($w,$h){
+  box-shadow: 5px 5px 5px #666;
+  border-radius: ($h)/2;
+  width: $w;
+  height: $h;
+  font-size: 18px;
+  &:hover{
+    background-color: green;
+  }
+}
+.d5{
+  @include btn(100px,60px);
+  background-color: red;
+}
+.d6{
+  @include btn(60px,20px);
+  background-color: blue;
+}

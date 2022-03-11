@@ -1,0 +1,70 @@
+十五、mysql模块
+	是Node.js下专门用于操作musql数据库的模块
+	下载：npm install mysql
+	
+	createConnection()   链接mysql
+	creatPool()   创建链接池
+	query(sql命令，数组，回调函数)   执行sql命令，数组用来保存过滤的数据，最后再去替换占位符，通过回调函数获取结果
+	
+	SQL注入：
+	select * from emp where 1;
+	select * from emp where ename="tao" or "1";
+	
+	占位符(?)：先将用户提供的值进行过滤，过滤完再替换位置
+	select * from emp where sex=? and salary>? , [0,8000]
+	
+	
+十六、后端接口
+	接口：后端提供的动态资源(注册、登录、数据操作...)
+	
+RESTful:是一种接口风格
+(1)URL
+	员工资源
+	http://127.0.0.1:12138/v1/emps   多个资源
+						版本号 资源名称(复数形式)
+	http://127.0.0.1:12138/v1/emps/3   单个资源
+								  编号
+	用户资源
+	http://127.0.0.1:12138/v1/users/login   对资源的操作方式
+									操作方式
+(2)请求方法
+对资源的操作方式
+get   获取资源
+post   新建资源
+delete   删除资源
+put   修改资源
+(3)过滤数据
+针对多个资源的操作
+http://127.0.0.1:12138/v1/emps?pno=1&count=10
+通过分页过滤数据				当前页码   每页的数据量
+http://127.0.0.1:12138/v1/emps?salary1=6000&salary2=8000
+过滤一组工资区间
+(4)返回结果
+格式为json，字符串形式的对象，属性名必须用双引号的形式，属性值如果是字符串必须用双引号
+包含状态码、消息、数据
+例如：用户登录的返回结果
+	{"code":200,"msg":"登陆成功"}
+例如：获取用户的列表
+	{"code":200,"msg":"获取成功","data":[...]}
+
+NOde.js下，每个路由就是一个接口
+
+十七、ApiPost
+	专门用于调试后端接口的工具，可以生成接口说明文档
+
+十八、正则表达式
+
+
+
+
+1.检测用户名是否可用(get  /checkuname)，将用户名以get方式传递； 
+获取get传递的数据 判断是否为空 
+如果不存在 {code:200,msg:'用户名未被注册'}   否则{code:201,msg:'用户名已注册'} 
+http://127.0.0.1:8080/v1/users/checkuname?uname=tao ;
+2.检测邮箱是否可用(get  /checkemail)，将邮箱以get方式传递 
+http://127.0.0.1:8080/v1/users/checkemail?email=tao@126.com ;
+3.检测手机号码是否可用(get  /checkphone)，将手机以get方式传递 
+http://127.0.0.1:8080/v1/users/checkphone?phone=18312345678 ;
+4.删除用户(delete  /编号) 成功{code:200,msg:'删除成功'}   失败{code:201,msg:'删除失败'} 
+5.用户列表(get  /)，以get方式传递当前的页码pno，每页的数据量count  最后响应{code:200,msg:'成功', data: ....}  
+http://127.0.0.1:8080/v1/users?pno=1&count=4

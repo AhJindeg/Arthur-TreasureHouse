@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .btn {
+        color: white;
+        background-color: green;
+        border-radius: 4px;
+        display: inline-block;
+        margin: 10px;
+        padding: 5px 60px;
+        cursor: pointer;
+        /* 用户无法选择文本 */
+        user-select: none;
+      }
+
+      .btn.disabled {
+        background-color: lightgray;
+        /* 光标事件 */
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div>
+        <input type="checkbox" />
+        <span> 我已阅读并同意用户注册协议 </span>
+      </div>
+      <div class="btn disabled">提交注册</div>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 按钮点击后 透明度发生变化 在0.2秒后恢复正常
+      $(".btn").click(function (e) {
+        e.preventDefault()
+        $(this).css("opacity", 0.6)
+        setTimeout(() => {
+          $(this).css("opacity", 1)
+        }, 100)
+      })
+
+      // 监听勾选框的变更 勾选去掉disabled 否则添加disabled
+      $(":checkbox").change(function (e) {
+        e.preventDefault()
+        // 读取属性：prop
+        $(this).prop("checked")
+          ? $(".btn").removeClass("disabled")
+          : $(".btn").addClass("disabled")
+        // if ($(this).prop("checked")) {
+        //   // 操作class
+        //   $(".btn").removeClass("disabled")
+        // } else {
+        //   // 非勾选 添加样式
+        //   $(".btn").addClass("disabled")
+        // }
+      })
+    </script>
+  </body>
+</html>

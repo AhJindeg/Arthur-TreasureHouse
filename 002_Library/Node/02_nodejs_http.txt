@@ -1,0 +1,131 @@
+十、http协议
+   http：超文本传输协议，是浏览器和web服务器之间的通信协议
+   
+（1）通用头信息
+   Request URL：要请求的服务器端的资源
+   Request Method：请求的方法，对资源的操作方式   get/post...
+   Status Code：响应的状态码
+      1**：接收到了请求，还未做出响应
+      2**：成功的响应
+	  3**：响应的重定向，发生跳转
+	  4**：客户端错误
+	  5**：服务器端错误
+（2）响应头信息 response
+   Content-Type：响应的内容类型，解决中文乱码 text/html;charset=utf-8
+   Location：设置跳转的URL
+（3）请求头信息 request
+（4）请求主体
+   只有传递数据才会显示
+   
+十一、http模块
+   可以创建WEB服务器，给客户端提供资源
+   const app=http.createServer();  创建WEB服务器
+   app.listen(12138);  设置端口
+   请求WEB服务器
+      http://127.0.0.1:12138
+	  http://localhost:12138
+   app.on('request',(req,res)=>{
+	   req 请求的对象
+	   	req.url 获取请求的URL   格式'/login'
+		req.method 获取请求的方法
+	   res 响应对象
+	    res.writeHead9(状态码，头信息)   设置响应的状态码和头信息
+		res.write()  设置响应到浏览器的内容
+		res.end()   结束并发送响应
+   })
+   
+十二、框架
+	框架：是一整套解决方案，提供了项目开发中的常用功能，简化了已有功能
+	Node.js常见框架：express、koa、egg
+	
+1. express框架
+	Express：基于 Node.js 平台，快速、开放、极简的 Web 开发框架
+	官网：www.expressjs.com.cn
+	属于第三方模块，需要先下载安装      npm install express
+	
+	(1)创建web服务器
+	const express = require('express'); // 引入express第三方模块
+	const app = express(); // 创建web服务器
+	app.listen(8080); // 设置端口
+	
+	(2)路由
+	路由根据请求的方法和请求的URL作出特定的响应，是一个独立的方法
+	路由三要素：请求的方法、请求的URL、回调函数
+	
+	res 响应的对象
+	res.redirect() 设置跳转的url并发送
+	res.sendFile() 设置响应的文件并发送，文件必须使用绝对路径(__dirname)
+	
+	req 请求的对象
+	req.url 获取请求的url
+	req.method 获取请求的方法
+	req.query 获取get传递的数据(查询字符串),结果为对象
+	
+	路由中获取数据
+	传递方式：get传递(传输最多8k)
+	格式：http://127.0.0.1:12138/mysearch?SS=好家伙
+	路由中获取，结果为对象：req.query {SS:'好家伙'}
+	
+	传递方式：post传递(以流的方式传递,分为多段,需要通过事件获取)
+	格式：URL中不可见
+	路由中获取，结果为对象：
+		req.on('data',(chunk)=>{
+		chunk是获取的分段数据，转字符串后位查询字符串，需要解析为对象
+		querystring.parse(str);
+	});
+	{user:'tao',password:'123123'}
+	
+	对比get和post的区别
+	get请求会被浏览器缓存，post不会被缓存，post安全度相对高
+	get请求传递的数据最大不超过8k，post请求传递的数据大小没有限制
+	get请求速度相对post比较快，在对数据安全要求不高的情况下会使用get，例如搜索
+	
+	传递方式：路由传参
+	格式： http://127.0.0.1:12138/package/mysql
+	路由中获取，结果为对象：
+		需要设置形参
+		app.get('/package/:pname',(req,res)=>{
+			res.params // 获取路由传参数据，格式为对象
+		});
+		{pname:'mysql'}
+		
+
+十三、路由器：
+	用来管理路由，将同一个功能模块下的所有的路由统一管理，最终路由器被WEB服务器使用
+	
+	路由：
+	const express=require('express'); // 引入express
+	const r=express.Router(); // 创建路由器对象
+	//添加用户
+	module.exports=r; // 导出路由器对象
+	
+	WEB服务器引入并使用路由器：
+	const userRouter = require('/user.js');
+	app.use('/user',userRouter);
+	
+十四、中间件
+	用于拦截对服务器的请求
+	分为应用级中间件、路由级中间件、内置中间件、第三方中间件、错误处理中间件
+	
+	(1)应用级中间件
+	就是一个函数，一旦拦截到以后会自动调用这个函数
+	app.use( 要拦截的url,函数 )
+	
+	(2)路由器中间件
+	就是路由器的使用
+	
+	(3)内置中间件
+	托管静态资源中间件
+	如果浏览器端请求静态资源，不需要通过路由去响应，而是自动的到某个目录下寻找
+	app.use(express.static('要托管的目录'));
+	
+	(4)第三方模块
+	都是第三方模块的形式存在，需要先下载安装
+	下载：npm install body-parser
+	1.引入body-parser
+	2.使用body-parser将所有post请求的数据解析为带对象
+	app.use(express.urlencoded({
+		extended:false   // 是否使用第三方qs模块解析为对象
+	}));
+	3.在路由中获取post请求的数据
+	req.body

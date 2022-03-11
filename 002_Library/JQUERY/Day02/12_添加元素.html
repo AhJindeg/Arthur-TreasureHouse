@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 添加兄弟级别的元素 -->
+    <ul>
+      <li>010</li>
+      <li>121</li>
+      <li>232</li>
+    </ul>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 添加的底层运用的innerHTML方式 内容可以被解析
+
+      // 在11的下面添加元素
+      // after: 在...之后
+      $("li:eq(1)").after("<li>新元素</li>")
+      // 允许多参数
+      $("li:eq(1)").after("aa<br>", "bb<br>")
+      // 数组
+      $("li:eq(1)").after(["aa<br>", "bb<br>"])
+
+      // before: 在...之前
+      $("li:eq(1)").before("<li>QWER</br>")
+      // 同样支持多参数
+      // 数组
+    </script>
+  </body>
+</html>

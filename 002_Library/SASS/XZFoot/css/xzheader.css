@@ -1,0 +1,25 @@
+/* 首页navbar */
+/* 搜索区两个规格：768以下，768以上，只限制长度的改变 */
+@media (max-width: 768px) {
+  .xz-search {
+    width: 100% !important;
+    margin: 20px 0 10px 0;
+  }
+}
+.xz-search {
+  width: 55%;
+  height: 34px;
+}
+.xz-search input {
+  width: 80%;
+  border: 0;
+  outline: none;
+  float: left;
+  height: 100%;
+}
+.xz-search img {
+  float: right;
+}
+.xz-mlist .breadcrumb-item + .breadcrumb-item::before {
+  content: "|";
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>010</li>
+      <li>121</li>
+    </ul>
+    <button>添加新内容</button>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $("button").click(function (e) {
+        // e.preventDefault()
+        // append: 在子元素的结尾添加新元素
+        // $('ul').append("<li>新内容</li>")
+        // 参数接受 多参数 或者数组类型 : 灵活的应用了函数的重载机制
+        let arr = ["11<br>", "22<br>", "33<br>"]
+        $("ul").append(arr)
+        // prepend: 子元素的开头添加
+        $("ul").prepend(arr)
+      })
+    </script>
+  </body>
+</html>

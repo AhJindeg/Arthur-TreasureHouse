@@ -1,0 +1,9 @@
+@charset "utf-8";
+$x:15px;
+$y:3px;
+div{
+  width: 100px+60px;
+  height: 200px-50px;
+  margin: 20px*3;
+  padding: $x/$y+px;
+}

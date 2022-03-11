@@ -1,0 +1,72 @@
+.xz-details {
+  .xz-jg {
+    height: 120px;
+    background-image: linear-gradient(#f0f0f0, #e0e0e0);
+    box-shadow: 0 0 5px 3px #b1b1b1;
+    padding: 15px 15px 0;
+    margin-top: 20px;
+  }
+  .xz-gg {
+    .xz-gg-r {
+      li:nth-child(1) {
+        /* 第一列，不放大不缩小固定宽度45px */
+        flex: 0 0 55px;
+      }
+      li:nth-child(2) {
+        /* 放大比例1 */
+        flex-grow: 1;
+        img {
+          margin-top: -10px;
+        }
+        a {
+          font-size: 12px;
+          &:hover {
+            text-decoration: none;
+            border-color: rgb(47, 119, 252) !important;
+          }
+        }
+        input {
+          width: 60px;
+          height: 38px;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+  .xz-btn-area {
+    & > button {
+      font-size: 22px;
+    }
+  }
+  @keyframes move {
+    /* 轮播 */
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .xz-roll {
+    overflow: hidden;
+    ul {
+      width: 200%;
+      animation: move 18s infinite linear;
+      &:hover {
+        animation-play-state: paused;
+      }
+      li {
+        width: 12.5%;
+        text-align: center;
+        font-size: 12px;
+        img {
+          width: 75%;
+        }
+      }
+    }
+  }
+  .breadcrumb-item + .breadcrumb-item::before {
+    /* 面包屑导航 */
+    content: ">" !important;
+  }
+}

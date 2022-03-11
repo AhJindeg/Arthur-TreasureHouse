@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击事件</button>
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+    <script>
+      $("button").click(function () {
+        console.log("okk")
+      })
+      // jqclick
+      $("button").click(function (e) {
+        // 代码块自带的阻止默认事件
+        e.preventDefault()
+        console.log("ook")
+      })
+      // 新增事件不会替换已有事件 说明是addEventListener的方法添加的
+      // 带有事件列表 会按照添加顺序执行
+
+      // 删除所有事件: unbind 不绑定
+      $("button").unbind()
+
+      // 删除指定事件: 要求事件必须是 命名函数 才可以
+      function show() {
+        console.log("ookk")
+      }
+      $("button").click(show)
+
+      // 指定删除: click的show方法
+      $("button").unbind("click", show)
+    </script>
+  </body>
+</html>

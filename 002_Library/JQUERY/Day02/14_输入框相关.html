@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button>查询商品</button>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 1. 实时监听输入框内容变化
+      // 输入框的事件: input事件
+      // 万能绑定事件方法: on(事件名,回调函数)
+      $("input").on("input", function () {
+        console.log($(this).val())
+        // 后续: 如果有查询接口 应该发送网络请求
+      })
+
+      // 2. 点击按钮获取内容
+      $("button").click(function (e) {
+        e.preventDefault()
+        console.log("搜索", $("input").val())
+      })
+
+      // 3. 键盘回车 触发搜索
+      // 事件名称: keyup 抬起触发
+      $("input").keyup(function (e) {
+        console.log(e)
+      })
+      // keyCode: 键盘键值对
+      if (e.keyCode == 13) {
+        console.log("查询", $(this).val)
+      }
+    </script>
+  </body>
+</html>
