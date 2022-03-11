@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 300px;
+        height: 200px;
+        background-color: green;
+        position: fixed;
+        left: 100px;
+        top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      box.onclick = function (e) {
+        // console.log(e)
+        // 事件触发后 会有几个坐标值
+        // 其中 screen: 屏幕 相对于电脑屏幕的左上角的坐标
+        console.log(`距离电脑屏幕左上角：${e.screenX} ${e.screenY}`)
+
+        // client: 客户端 距离浏览器的左上角位置
+        console.log(`距离浏览器内容左上角：${e.clientX} ${e.clientY}`)
+        // 这两个坐标使用较多 官方简化写法 x y
+        console.log(e.x, e.y)
+
+        // offsetX,offsetY : 当前被点击元素的左上角
+        console.log(`距离当前被点击元素的左上角：${e.offsetX} ${e.offsetY}`)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .nav .center {
+      height: 80px;
+      width: 96%;
+      margin: auto;
+    }
+    /* 992以上 */
+    @media (min-width:992px) {
+      .nav .center {
+        display: flex;
+        align-items: center;
+      }
+      .nav .center .logo {
+        width: 180px;
+        margin-right: 50px;
+      }
+      .nav .center .logo img {
+        display: block;
+        width: 100%;
+      }
+      .nav ul {
+        list-style: none;
+        height: 80px;
+      }
+      .nav ul li {
+        float: left;
+        width: 100px;
+        line-height: 80px;
+        text-align: center;
+      }
+    }
+    /* 992以下 */
+    @media (max-width:992px) {
+      .nav .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .nav .center .logo {
+        width: 180px;
+      }
+      .nav .center .logo img {
+        display: block;
+        width: 100%;
+      }
+      .nav ul {
+        display: none;
+      }
+    }
+    .bg {
+      width: 100%;
+    }
+    .bg img {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- 992 以下就没导航 logo到中间 -->
+  <!-- 1200以上三块，之间2块 768以下一块 -->
+  <!-- 输入框600以下一行一个 -->
+  <!-- 输入框区576以下都是百分比的宽度 -->
+  <!-- 下面的输入框可以不写 -->
+  <!-- 576-768 w512 -->
+  <!-- 768-992 w692 -->
+  <!-- 992-1204 w772 -->
+  <!-- 1204以上 w922 -->
+  <div class="nav">
+    <div class="center">
+      <div class="logo">
+        <img src="./image/picture/logo-3.png" alt="">
+      </div>
+      <ul>
+        <li>home</li>
+        <li>list</li>
+        <li>pages</li>
+        <li>blog</li>
+        <li>contact</li>
+      </ul>
+    </div>
+  </div>
+  <div class="bg">
+    <img src="./image/picture/page-title.jpg" alt="">
+  </div>
+
+
+</body>
+</html>

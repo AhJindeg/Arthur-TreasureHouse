@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* @media screen and (max-width:800px){
+      .center{
+        width: 700px;
+        background-color: green;
+      }
+    }
+    @media(min-width:800px){
+      .center{
+        width: 800px;
+        background-color: yellow;
+      }
+    } */
+    .center{
+      margin: auto;
+      height: 200px;
+      display: flex;
+    }
+    
+    .center div{
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+    }
+    .d1{ background-color: crimson;}
+    .d2{ background-color: yellow;}
+    .d3{ background-color: green;}
+    @media (min-width:768px) {
+      .d1{ border-radius: 50%;}
+    }
+    @media (max-width:768px) and (min-width:576px) {
+      .d2{ border-radius: 50%;}
+    }
+    @media (max-width:576px) {
+      .d3{ border-radius: 50%;}
+      /* .center .d1{ width: 0px; height: 0px; border: 0px;} */
+      .d1{ display: none;}
+    }
+  </style>
+</head>
+<body>
+  <!-- 当页面800像素以上的时候，该元素宽800px背景色黄色，当页面小于800px时，该元素宽700px背景色绿色，不论何时都要在浏览器内水平居中高度200px -->
+  <div class="center">
+    <!-- d1-d3，100*100，黑色边框，颜色不同，当w768px以上时，d1是圆形，当768px-576px时，d2是圆形，576以下d3是圆形-->
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+  </div>
+</body>
+</html>

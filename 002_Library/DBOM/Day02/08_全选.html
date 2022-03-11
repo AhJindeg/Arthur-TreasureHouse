@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 500px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>管理员列表</h2>
+    <!-- table>(thead>tr>th*4)+(tbody>tr*4>td*4) -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" />
+            <span>全选</span>
+          </th>
+          <th>管理员ID</th>
+          <th>姓名</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>1</td>
+          <td>Tes</td>
+          <td>
+            <span>修改</span>
+            <span>删除</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>2</td>
+          <td>Man</td>
+          <td>
+            <span>修改</span>
+            <span>删除</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>3</td>
+          <td>Ana</td>
+          <td>
+            <span>修改</span>
+            <span>删除</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>4</td>
+          <td>Adm</td>
+          <td>
+            <span>修改</span>
+            <span>删除</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      let thead_type = document.querySelector("thead input")
+      let tbody_type = document.querySelectorAll("tbody input")
+
+      // 1. thead中全选框变化后，让tbody中的选择框，都会变成与全选框相同的checked状态
+      thead_type.onchange = function () {
+        tbody_type.forEach(item => (item.checked = thead_type.checked))
+      }
+
+      // 2. 判断打勾情况 是否为全选
+      tbody_type.forEach(item => {
+        item.onchange = function () {
+          // 全选：选中状态的元素个数 == 所有元素
+          let checkNum = 0 // 选中状态的个数
+          // 遍历所有按钮，查看有多少选中的
+          tbody_type.forEach(item => {
+            if (item.checked) {
+              checkNum++
+            }
+          })
+          // 总个数 == 所有个数 全选
+          // if (checkNum == tbody_type.length) {
+          //   thead_type.checked == true
+          // } else {
+          //   thead_type.checked == false
+          // }
+          // 判断的结果就是checked的状态
+          thead_type.checked = checkNum == tbody_type.length
+        }
+      })
+    </script>
+  </body>
+</html>

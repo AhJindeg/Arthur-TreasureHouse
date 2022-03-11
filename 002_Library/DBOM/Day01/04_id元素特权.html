@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="d1">Hello</div>
+    <div id="d2">Hello World</div>
+
+    <script>
+      // 输出body节点下的所有子元素
+      console.dir(document.body.childNodes)
+
+      // 获取所有元素
+      console.dir(document.body.children)
+
+      // 带有id属性的元素 会被系统直接自动识别 并保存为属性
+      console.log(d1) // 兼容性问题 新版本支持
+
+      // 所有版本适用
+      var dd1 = document.getElementById("d1")
+      
+    </script>
+  </body>
+</html>

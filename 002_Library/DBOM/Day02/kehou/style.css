@@ -1,0 +1,39 @@
+div > sub {
+  color: red;
+  font-size: 18px;
+}
+.mainBody {
+  width: 258px;
+  margin: auto;
+  margin-top: 100px;
+}
+.mainBody > h2 {
+  text-align: center;
+  padding-right: 24px;
+}
+.mainBody > div {
+  margin: 40px auto;
+}
+.mainBody > div button {
+  width: 80px;
+  height: 26px;
+  margin-left: 25px;
+}
+
+.verify div,
+.verifys div {
+  float: left;
+  font-size: 12px;
+  margin-left: 50px;
+  display: none;
+}
+.verify span,
+.verifys span {
+  float: right;
+  display: none;
+}
+img {
+  height: 12px;
+  line-height: 12px;
+  padding-top: 4px;
+}

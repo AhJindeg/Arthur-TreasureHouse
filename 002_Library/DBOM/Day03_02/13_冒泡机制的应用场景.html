@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 冒泡机制的应用场景 -->
+    <div id="btns">
+      <button data-color="red">红色</button>
+      <button data-color="blue">蓝色</button>
+      <button data-color="green">绿色</button>
+    </div>
+    <div
+      id="area"
+      style="width: 100px; height: 100px; border: 1px solid gray"
+    ></div>
+
+    <script>
+      let btn_all = document.querySelectorAll("button")
+      btn_all.forEach(item => {
+        item.onclick = function () {
+          area.style.background = item.dataset.color
+        }
+      })
+    </script>
+  </body>
+</html>

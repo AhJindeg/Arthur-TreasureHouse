@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="reload()">刷新</button>
+    <br />
+    <br />
+    <!-- 如果要执行的js代码过于简单 可以直接在html中书写 -->
+    <button onclick="javascript: location.reload();">刷新</button>
+    <script>
+      function reload() {
+        location.reload()
+      }
+
+      // location: 此变量中 存放了当前页面的各种信息
+      // console.log(location)
+    </script>
+  </body>
+</html>

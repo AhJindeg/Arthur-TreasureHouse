@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 更多获取元素的方式： -->
+    <div id="s1">Hello</div>
+    <div>world</div>
+    <script>
+      // world:body中的第一个元素的首个兄弟
+      var div = document.body.firstElementChild.nextElementSibling
+      console.log(div)
+    </script>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    <ul id="nav">
+      <li class="item parent">电影</li>
+      <li class="item parent">
+        <span>综艺</span>
+        <ul>
+          <li class="item child active">吐槽大会1</li>
+          <li class="item child">吐槽大会2</li>
+          <li class="item child">吐槽大会3</li>
+          <li class="item child">吐槽大会4</li>
+        </ul>
+        <li class="item parent">剧集</li>
+      </li>
+    </ul>
+    <script>
+      // 读取 id="nav" 的元素
+      var nav = document.getElementById('nav')
+      console.log(nav);
+
+      // 读取nav节点下的所有li标签
+      var lis = nav.getElementsByTagName('li')
+      console.log(lis);
+
+      // 读取nav下的第二个li下的所有li
+      var lis = nav.children[1].getElementsByTagName('li')
+      console.log(lis);
+
+      // 读取nav下所有 class="item child" 的元素
+      var lis = nav.getElementsByClassName('item child')
+      console.log(lis);
+    </script>
+  </body>
+</html>

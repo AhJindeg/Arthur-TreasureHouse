@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://bilibili.com">超链接</a>
+  </body>
+  <script>
+    let a = document.getElementsByTagName("a")[0]
+    a.onclick = function (e) {
+      // 阻止默认
+      e.preventDefault()
+      alert(1)
+      // 默认机制：先触发点击事件中的代码 再执行自身默认的事件
+    }
+  </script>
+</html>
