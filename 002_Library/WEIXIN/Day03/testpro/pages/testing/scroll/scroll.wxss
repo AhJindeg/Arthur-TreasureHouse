@@ -1,0 +1,13 @@
+/* pages/testing/scroll/scroll.wxss */
+scroll-view{
+  display: flex;
+}
+.item{
+  margin: 0px 0px 0px 10px;
+}
+.item, .item image{
+  width: 180rpx; text-align: center;
+}
+scroll-view, .item{
+  height: 310rpx;
+}

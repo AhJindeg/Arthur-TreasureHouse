@@ -1,0 +1,3 @@
+/* pages/testing/databind/databind.wxss */
+.rect { border-radius: 3px; }
+.round { border-radius: 50%; }

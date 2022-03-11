@@ -1,0 +1,48 @@
+<!--pages/testing/scroll/scroll.wxml-->
+<text>pages/testing/scroll/scroll.wxml</text>
+<scroll-view 
+  scroll-x="{{true}}"
+  enable-flex="{{true}}"
+  show-scrollbar="{{false}}"
+  enhanced="{{true}}">
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+  <view class="item">
+    <image src="/images/gtl.jpg" mode="widthFix"></image>
+    <text>亮亮</text>
+  </view>
+</scroll-view>

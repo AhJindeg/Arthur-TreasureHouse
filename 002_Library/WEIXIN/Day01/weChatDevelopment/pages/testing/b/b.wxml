@@ -1,0 +1,4 @@
+<!--pages/testing/b/b.wxml-->
+<text>pages/testing/b/b.wxml</text>
+<navigator url="/pages/testing/c/c" open-type="navigate">B-navigate->C</navigator>
+<navigator url="/pages/testing/c/c" open-type="redirect">B-redirect->C</navigator>

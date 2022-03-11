@@ -1,0 +1,11 @@
+<!--pages/testing/input/input.wxml-->
+<text style="font-size: 1.3em;">用户注册
+您输入的用户名：{{username}}</text>
+<input type="text" placeholder="用户名"
+  bindinput="doInput"/>
+<text>密码：{{password}}</text>
+<input password type="text" placeholder="密码"
+  bindinput="doInput2"/>
+<input type="number" placeholder="年龄"/>
+<input type="idcard" placeholder="身份证号"/>
+<input type="digit" placeholder="存款"/>

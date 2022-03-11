@@ -1,0 +1,8 @@
+<!--pages/testing/b/b.wxml-->
+<text>pages/testing/b/b.wxml</text>
+<navigator url="/pages/testing/c/c" open-type="navigate">
+我是 b， 点我navigate到 c
+</navigator>
+<navigator url="/pages/testing/c/c" open-type="redirect">
+我是 b， 点我redirect到 c
+</navigator>

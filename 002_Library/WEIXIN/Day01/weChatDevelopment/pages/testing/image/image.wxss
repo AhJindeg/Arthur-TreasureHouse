@@ -1,0 +1,6 @@
+/* pages/testing/image/image.wxss */
+image {
+  width: 330rpx;
+  height: 330rpx;
+  margin-left: 30rpx;
+}

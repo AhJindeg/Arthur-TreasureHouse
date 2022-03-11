@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/theatre/theatre",
+    "pages/me/me",
+    "pages/logs/logs",
+    "pages/test/test"
+  ],
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#f00",
+    "list": [{
+      "text": "电影",
+      "pagePath": "pages/index/index"
+    },{
+      "text": "影院",
+      "pagePath": "pages/theatre/theatre"
+    },{
+      "text": "我的",
+      "pagePath": "pages/me/me"
+    }]
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#ccc",
+
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTitleText": "学子影院",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

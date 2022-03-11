@@ -1,0 +1,21 @@
+<!--pages/testing/c/c.wxml-->
+<text>pages/testing/c/c.wxml</text>
+<navigator url="/pages/testing/a/a" open-type="navigate">
+  我是c，点我navigate到 a
+</navigator>
+<navigator open-type="navigateBack">
+  我是c， 点我返回到上一页
+</navigator>
+<navigator open-type="navigateBack" delta="2">
+  我是c， 点我返回到上上一页
+</navigator>
+<navigator url="/pages/index/index" 
+  open-type="switchTab">
+  我是c， 点我switchTab到index
+</navigator>
+<navigator url="/pages/index/index" open-type="reLaunch">
+  我是c， 点我relaunch到index
+</navigator>
+<navigator url="/pages/testing/b/b" open-type="reLaunch">
+  我是c， 点我relaunch到b
+</navigator>

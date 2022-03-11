@@ -1,0 +1,4 @@
+/* pages/testing/radio/radio.wxss */
+radio, checkbox {
+  display: block; margin: 10px;
+}

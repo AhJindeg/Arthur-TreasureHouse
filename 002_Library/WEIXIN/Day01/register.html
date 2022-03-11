@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>register.html</title>
+</head>
+<body>
+  <input id="code" type="text" placeholder="请输入验证码"/>
+  <img src="http://localhost:3000/getcode" alt="">
+  <br><br>
+  <button id="btn">提交</button>
+  <script>
+    btn.addEventListener('click', ()=>{
+      let codev = document.getElementById('code').value
+      // 跳转页面, 传参
+      location.href=`http://localhost:3000/register?code=${codev}`
+    })
+  </script>
+</body>
+</html>
+
+

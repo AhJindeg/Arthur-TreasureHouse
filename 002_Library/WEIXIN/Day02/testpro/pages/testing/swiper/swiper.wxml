@@ -1,0 +1,30 @@
+<!--pages/testing/swiper/swiper.wxml-->
+<text>pages/testing/swiper/swiper.wxml</text>
+<swiper indicator-dots="{{true}}"
+        indicator-color="#fff6"
+        indicator-active-color="#0f0"
+        autoplay="{{true}}"
+        interval="3000"
+        duration="200"
+        circular="{{true}}"
+        vertical="{{true}}"
+        previous-margin="0px"
+        next-margin="0px"
+        display-multiple-items="1">
+  <swiper-item>
+    <image src="/images/1.jpg"></image>
+    <text>嘉南传 · 震撼开播</text>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/2.jpg"></image>
+    <text>《机智的恋爱》大结局</text>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/1.jpg"></image>
+    <text>嘉南传 · 震撼开播</text>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/2.jpg"></image>
+    <text>《机智的恋爱》大结局</text>
+  </swiper-item>
+</swiper>

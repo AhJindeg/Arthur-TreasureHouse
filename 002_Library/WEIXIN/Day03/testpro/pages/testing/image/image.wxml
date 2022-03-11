@@ -1,0 +1,14 @@
+<!--pages/testing/image/image.wxml-->
+
+<image src="/images/xcxm.jpg"
+  show-menu-by-longpress="{{true}}">
+</image>
+
+<image src="/images/index_enable.png"
+  show-menu-by-longpress="{{true}}">
+</image>
+
+<image src="/images/1.jpg" mode="aspectFill">
+</image>
+<image src="/images/1.jpg" mode="scaleToFill">
+</image>

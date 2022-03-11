@@ -1,0 +1,7 @@
+<!--pages/testing/c/c.wxml-->
+<text>pages/testing/c/c.wxml</text>
+<navigator url="/pages/testing/a/a" open-type="navigate">C-navigate->A</navigator>
+<navigator open-type="navigateBack">navigateBack-返回上一页</navigator>
+<navigator open-type="navigateBack" delta="2">navigateBack-2-返回上上页</navigator>
+<navigator url="/pages/index/index" open-type="redirect">C-redirect->index</navigator>
+<navigator url="/pages/testing/b/b" open-type="reLaunch">C-reLaunch->B</navigator>

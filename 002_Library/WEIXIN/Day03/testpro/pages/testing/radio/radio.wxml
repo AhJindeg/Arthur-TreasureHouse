@@ -1,0 +1,36 @@
+<!--pages/testing/radio/radio.wxml-->
+<text space="nbsp">
+  1. 请选择以下英雄谁适合打野位？</text>
+<radio-group bindchange="changeEvent">
+  <radio checked value="A" color="#f00">A. 王昭君</radio>
+  <radio value="B" color="#0f0">B. 花木兰</radio>
+  <radio value="C" color="#00f">C. 李白</radio>
+  <radio value="D" color="#f0f">D. 杜甫</radio> 
+</radio-group>
+<text space="nbsp">  您选择的答案是：{{answer}}</text>
+
+<text space="nbsp">
+
+  2. 请选择你擅长的英雄？</text>
+<checkbox-group bindchange="changeEvent2">
+  <checkbox checked value="A" color="#f00">A. 王昭君</checkbox>
+  <checkbox value="B" color="#0f0">B. 花木兰</checkbox>
+  <checkbox value="C" color="#00f">C. 李白</checkbox>
+  <checkbox value="D" color="#f0f">D. 杜甫</checkbox> 
+</checkbox-group>
+<text space="nbsp">  您选择的答案是：{{answer2}}</text>
+
+<text space="nbsp">
+
+  3. 是否开启飞行模式？</text>
+<switch color="#0f0" 
+  bindchange="changeEvent3">
+  {{answer3?'开启':'关闭'}}  
+</switch>
+
+<text space="nbsp">
+
+  4. 请选择城市？</text>
+<picker mode="region" bindchange="changeEvent4">
+  您选择的城市是：{{answer4}}
+</picker>

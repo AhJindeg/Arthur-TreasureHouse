@@ -1,0 +1,30 @@
+<!--pages/testing/databind/databind.wxml-->
+<!-- <image src="{{url}}"
+  style="width:750rpx; height:421rpx;"></image> -->
+<image src="/images/{{num}}.jpg"
+  bindtap="tapImage"
+  style="width:750rpx; height:421rpx;"></image>
+
+<text>个人简介</text>
+
+<image src="/images/gtl.jpg" mode="aspectFill"
+  class="{{type}}"
+  style="width: {{size}}px; height: {{size}}px; display: block;"></image>
+
+<view>姓名：{{name}}</view>
+<view>年龄：{{age}}  
+  <text wx:if="{{age<18}}">未成年</text>
+  <text wx:elif="{{age<35}}">青年</text>
+  <text wx:elif="{{age<60}}">中年</text>
+  <text wx:else>老年</text>
+</view>
+<view>婚否：{{married?'已婚':'未婚'}}</view>
+<view>学校：{{school.name}} [ {{school.loc}} ]</view>
+<view>爱吃：</view>
+<view wx:for="{{goods}}" wx:key="id"
+  wx:for-item="cp" 
+  wx:for-index="i">
+  -{{i}}-编号：{{cp.id}}
+  菜名：{{cp.name}}
+  价格：{{cp.price}}
+</view>
