@@ -1,0 +1,21 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red; }
+  .box div {
+    margin-left: 20px; }
+    .box div p {
+      font-size: 20px; }
+
+.box .item {
+  background-color: yellow; }
+  .box .item::after {
+    content: "";
+    display: block;
+    clear: both; }
+  .box .item img {
+    float: left; }
+  .box .item p {
+    float: left; }
+
+/*# sourceMappingURL=&.css.map */

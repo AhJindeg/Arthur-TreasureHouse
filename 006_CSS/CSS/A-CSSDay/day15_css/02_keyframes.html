@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AhJindeg</title>
+    <link rel="stylesheet" href="animate.min.css">
+    <style>
+      @keyframes ty{
+        0%{transform: translateX(0);}
+        100%{transform: translateX(300px);}
+      }
+      .d1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* 使用关键帧 */
+        animation-name: ty;
+        /* 持续时间 */
+        animation-duration: 1s;
+      }
+      .d2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 动画 -->
+    <div class="d1"></div>
+    <!-- 使用动画库的元素 -->
+    <div class="d2 animate__animated animate__flipOutY"></div>
+  </body>
+</html>

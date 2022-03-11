@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AhJindeg</title>
+    <style>
+      .d1{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        margin: auto;
+        /* border-radius: 0px; */
+        /* 过渡的样式 */
+        /* transition-property: background-color; */
+        /* 过渡时间 */
+        /* transition-duration: 4s; */
+        /* 过渡方式 linear匀速 ease默认 */
+        /* transition-timing-function: linear; */
+        /* 简写：过渡与延迟要有前后顺序，过渡时间在前延迟时间在后 */
+        /* transition: all 1s 1s linear; */
+        /* 分组单独执行 */
+        transition: width 1s linear, height 800ms linear, background-color 1s linear, border-radius 800ms linear, margin-top 1s linear;
+      }
+      body:hover .d1{
+        background-color: blue;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d1"></div>
+  </body>
+</html>
