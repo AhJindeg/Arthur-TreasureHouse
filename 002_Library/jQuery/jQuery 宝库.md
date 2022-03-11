@@ -1,11 +1,5 @@
 ## jQuery 宝库
 
-### 定义
-
-　　jQuery创始人是美国John Resig，是优秀的Javascript框架；
-
-　　jQuery是一个轻量级、快速简洁的javaScript库
-
 ### jQuery对象
 
 　　jQuery产生的对象时jQuery独有的，只能自己调用
