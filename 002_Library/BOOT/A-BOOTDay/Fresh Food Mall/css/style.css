@@ -1,0 +1,37 @@
+/* 首页图片 */
+.zdy-shouye-bg{
+  background-color: #f3f4f6;
+  overflow: hidden;
+}
+.zdy-shouye-bg img{
+  float: right;
+}
+/* 搜索 */
+.zdy-search{
+  height: 40px;
+  border-radius: 20px;
+}
+/* 自定义菜单 */
+.zdy-menu li{
+  width: 20%;
+}
+.zdy-menu li>div{
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+}
+/* 热销 与 商品列表 */
+.zdy-hot li,.zdy-list li{
+  width: 48%;
+}
+.zdy-hot li h3, .zdy-list li h3{
+  font-size: 17px;
+}
+.zdy-hot li p, .zdy-list li p{
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.zdy-hot li h4, .zdy-list li h4{
+  font-size: 18px;
+  color: orangered;
+}

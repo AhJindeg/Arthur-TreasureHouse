@@ -1,0 +1,16 @@
+.xz-zy{
+  width: 50px;
+  height: 100px;
+  background-color: rgb(0, 0, 0,0.2);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.xz-zsf li{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(184, 184, 184);
+}
+.xz-zsf .active{
+  background: green;
+}
