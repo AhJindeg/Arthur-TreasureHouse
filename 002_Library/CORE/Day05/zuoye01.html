@@ -1,0 +1,25 @@
+ 
+<script>
+  //数组函数练习, 回调函数用 箭头函数书写
+  var emps = [
+    { name: "mary", age: 20, gender: "女", salary: 10000 },
+    { name: "lily", age: 35, gender: "女", salary: 9000 },
+    { name: "jack", age: 28, gender: "男", salary: 8000 },
+    { name: "tom", age: 35, gender: "男", salary: 8800 },
+    { name: "jerry", age: 19, gender: "男", salary: 12000 },
+  ] // 1.查看是否都是女的
+  var sexs = emps.every(i => i.gender === "女")
+  console.log(sexs ? "都是女士" : "姐妹们有臭男人溜进来了") // 2.看是否有薪资大于10000的
+  var salarys = emps.some(it => it.salary > 10000)
+  console.log(salarys ? "有工资高于10000元的小可爱" : "没一个过万的！") //3.找出所有男的
+  var man = emps.filter(ite => ite.gender === "男")
+  console.log("找出来了这几个臭男人！！！", man) //4.把所有人的名字改为大写,  返回这些大写人名组成的数组
+  var people = emps.map(item => item.name.toUpperCase())
+  console.log("把所有人名字转为了大写", people) //5.把数组中的每个人的名字改为大写, 薪资+500
+  var people = emps.map(
+    item => item.name.toUpperCase() + "的现工资" + Number(item.salary + 500)
+  )
+  console.log("又把所有人名字转为了大写,还给人加了五百块，高兴吧！！", people) //6.计算所有人的薪资总和
+  var sum = emps.reduce((sum, item) => sum + item.salary, 0)
+  console.log(`所有人工资和${sum}`)
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // filter:过滤
+      // 把数组中满足条件的元素们留下来形成新的数组
+      var emps = [
+        { name: "亮亮", gender: "男", age: 28 },
+        { name: "延安", gender: "女", age: 25 },
+        { name: "梦瑶", gender: "女", age: 29 },
+        { name: "明明", gender: "男", age: 32 },
+      ]
+
+      // 找出性别为女的
+      var girls = emps.filter(function (item) {
+        return item.gender == "女"
+      })
+      console.log(girls)
+
+      // 找出>30
+      var ages = emps.filter(function (item) {
+        return item.age > 30
+      })
+      console.log(ages)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // apply的用途:
+      // Math的max()方法: 用来求出参数中的最大值
+      console.log(Math.max(12, 32, 435, 435, 34546));
+
+      // 求数组中的最大值
+      var nums = [123, 435, 34, 13, 435, 453, 213];
+      // max: 此方法只能判断 参数是数字的情况, 无法直接传递数组
+      console.log(Math.max(nums)); //NaN: not a numebr- 不是数字
+
+      // apply: 可以把数组类型 转化成 普通的函数参数结构
+      // 没有this指向的问题, 参数1不用传
+      var a = Math.max.apply(null, nums);
+      console.log(a);
+
+      // 合并数组:
+      var arr1 = [1, 2, 3, 4];
+      var arr2 = [11, 22, 33, 44];
+      // 回顾: 可以用concat合并
+      // var arr = arr1.concat(arr2);
+      // console.log(arr);
+      arr1.push(99, 88, 77, 66);
+      // apply: 参数arr1 必须要写, 代表执行 apply的对象
+      arr1.push.apply(arr1, arr2);
+      // ES6提供的语法糖, ... 可以拆解数组变为参数
+      arr1.push(...arr2);
+      console.log(arr1);
+    </script>
+  </body>
+</html>

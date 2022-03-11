@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Liang(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      var xiaoLiang = new Liang("小亮", 1);
+      console.log(xiaoLiang);
+
+      var maYun = {
+        money: 999999999999,
+        houses: 1000000,
+      };
+      // 替换 小亮的 父亲 为 马云..
+      // 为对象替换原型
+      // 直接修改 __proto__ 的指向, 效率比较低, 推荐另一种做法:
+      // xiaoLiang.__proto__ = maYun;
+
+      // 系统提供了专门替换对象原型的函数: setPrototypeOf()
+      // 把参数1 的 proto 换成 参数2
+      Object.setPrototypeOf(xiaoLiang, maYun);
+
+      console.log(xiaoLiang);
+      // 代码提示生成后的代码有一种特殊的状态高亮, 此处书写代码没有代码提示, 推荐按 ESC 可以退出此状态, 再写代码就有提示了!
+      console.log(xiaoLiang.money);
+
+      // 如果通过构造函数再次创建对象, 此对象的原型会变成马云吗?
+      var xxLiang = new Liang("小小亮", 3);
+      console.log(xxLiang);
+
+      // setPrototypeOf(对象, 原型):  只会影响修改的对象, 不会影响构造函数, 之后创建的对象没有变更
+    </script>
+  </body>
+</html>

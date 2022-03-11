@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 开启严格模式. 系统帮你找错误!
+      // 严格模式下, 全局区的函数中的this 是 undefined,
+      // 目的就是防止直接调用函数 向window中注入属性, 导致的全局污染
+      "use strict";
+
+      // 严格模式:就是系统会帮助你把 有可能错误的地方 直接指出来, 进行报错!
+      // 规避开始中 常遇到的问题, 规避风险
+      // 所有框架默认都开 严格模式!
+      function Demo(name) {
+        // 函数中的this 代表其当前所在的对象
+        // 直接调用 Demo() 则, this是window
+        console.log("this:", this);
+
+        this.aname = name;
+
+        // 这里就相当于 window.aname = name
+        // 此时就会意外创建 aname, 造成了全局变量污染
+      }
+      //构造函数使用时, 应该 new 触发, 返回对象
+      // var obj = new Demo("亮亮");
+
+      // 常见问题: 构造函数忘记写new
+      var xx = Demo("铭铭");
+    </script>
+  </body>
+</html>

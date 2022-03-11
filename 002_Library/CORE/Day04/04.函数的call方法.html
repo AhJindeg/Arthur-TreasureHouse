@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 函数call方法
+      // 函数默认情况下: 函数中this指向其所在的对象!
+      // 利用call可以强制修改 函数中this的指向!
+
+      var name = "全局区域";
+
+      var yanan = {
+        name: "亚楠",
+        intro: function () {
+          console.log(`${this.name} 是最棒的!`);
+          console.log("this:", this);
+        },
+      };
+
+      yanan.intro(); // 亚楠
+      // 函数是对象类型 -- 函数诞生 new Function()
+      // 对象类型是引用类型
+      var intro = yanan.intro;
+      intro(); // 全局区域
+
+      // 利用call强制替换函数 执行时 的 this
+      console.log("利用call 替换函数的this 然后执行");
+      intro.call(yanan);
+
+      intro.call({ name: "亮亮" });
+      // 伪代码: call实现了什么
+      // 相当于: intro.this = {name:"亮亮"}
+      //         intro()
+
+      function demo() {
+        console.log("demo.this:", this);
+      }
+      // 执行时, 把demo中的this 替换成 参数1: yanan
+      demo.call(yanan);
+    </script>
+  </body>
+</html>
+
+<!-- 
+  函数的call方法: 在替换函数中this的同时, 执行函数
+
+  函数.call(新的this)
+ -->

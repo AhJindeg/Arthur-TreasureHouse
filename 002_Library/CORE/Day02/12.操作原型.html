@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 操作原型
+      function Teacher(name, age) {
+        this.name = name;
+        this.age = age;
+        // _: 键盘的 shift + -     - 在0的右边
+        // this.__proto__.phone = "10086";
+        // 构造函数隐式会声明一个 __proto__ 变量:  是对象类型
+        // 其中会存放当前的构造函数本身  constructor :构造
+      }
+      // 通常在构造函数的外部操纵原型
+      Teacher.prototype.phone = '156565656565'
+
+      var t1 = new Teacher("亮亮", 23);
+      console.log(t1);
+    </script>
+  </body>
+</html>

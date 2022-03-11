@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 数组some方法：判断数组中是否有满足条件的项目
+      // 数组.some(回调函数)
+      // 函数结构: function(元素,序号,数组本身){}
+      var teachers = [
+        { name: "qb", age: 32, married: true, salary: 13000 },
+        { name: "qc", age: 24, married: true, salary: 8000 },
+        { name: "qd", age: 23, married: false, salary: 11000 },
+        { name: "qe", age: 20, married: true, salary: 17000 },
+      ]
+
+      // 判断数组中是否存在年龄 >35
+      var result = teachers.some(function (item, index, arr) {
+        console.log("item:", item)
+        console.log("index:", index)
+        console.log("arr:", arr)
+        return item.age > 35
+      })
+
+      console.log(result ? "存在年龄大于35岁的" : "不存在年龄大于35岁的")
+
+      // 判断是否有已婚的
+      var results = teachers.some(function (item) {
+        return item.married
+      })
+      console.log(results ? "存在已婚的" : "不存在已婚的")
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // async和await
+      function checkUname() {
+        return new Promise((resolve, reject) => {
+          Math.random() > 0.3
+            ? resolve("用户名可用！")
+            : reject("用户名不可用！")
+        })
+      }
+
+      function checkEmail() {
+        return new Promise((resolve, reject) => {
+          Math.random() > 0.3 ? resolve("邮箱可用！") : reject("邮箱不可用！")
+        })
+      }
+
+      // promise:必须在一个函数中使用，函数必须带async前缀
+      // async:代表异步，代表show函数将会异步执行
+      async function show() {
+        // wait:等待
+        // 不用写.then来接受result 改为返回值了
+        // 优点：不用写一长串的.then
+        // 使用try{}catch(){}抓取错误
+
+        try {
+          let result = await checkUname()
+          console.log(result)
+        } catch (error) {
+          console.log("#", error)
+        }
+
+        result = await checkEmail()
+        console.log(result)
+      }
+      show()
+    </script>
+  </body>
+</html>

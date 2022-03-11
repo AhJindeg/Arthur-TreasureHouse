@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function demo() {
+      //   window.awords = "亮亮啥都没有讲??!!";
+      // }
+      function demo() {
+        return "亮亮啥都没有讲??!!";
+      }
+      var awords = demo();
+      // window.awords = demo();
+      // demo();
+
+      // 匿名函数自调用: 节省代码, 少声明一个函数, 节省内存空间
+      var awords = (function () {
+        return "亮亮啥都没有讲??!!";
+      })();
+    </script>
+  </body>
+</html>

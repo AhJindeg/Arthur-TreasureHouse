@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //继承：js通过原型链实现继承效果
+      class Father {
+        firstName = "王"
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        desc() {
+          const { name, age, firstName } = this
+          console.log(name, age, firstName)
+        }
+      }
+      // 子类，继承父类
+      // extends：继承的意思
+      class Son extends Father {
+        constructor(name, age, phone) {
+          // 特殊设计：super() 就代表父类的构造方法
+          super(name, age)
+          // this.name = name;
+          // this.age = age;
+          this.phone = phone
+        }
+        // 多态：一个父类 可以拥有很多子类
+        // 每个子类 都可以重写一个反法
+        // 此时父类的同一个方法 在不同的子类中 呈现不同的效果
+
+        desc() {
+          // 关键词 super 代表父元素
+          super.desc()
+          console.log("我是子类的desc方法")
+        }
+      }
+
+      let s = new Son("小亮", 33, "12345678910")
+      console.log(s.name, s.age, s.phone)
+      s.desc()
+    </script>
+  </body>
+</html>

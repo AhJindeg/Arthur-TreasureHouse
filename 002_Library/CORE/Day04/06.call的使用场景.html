@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 用途: 当创建多个类似的构造函数时, 会有很多共同的属性, 可以提取这些共同的属性 组成一个 共享的构造函数
+
+      // 函数.call(新对象):  就会把函数的this替换成新对象, 然后触发函数
+      // 构造函数: 创建员工对象
+      function Employee(name, age, eid) {
+        this.name = name;
+        this.age = age;
+        this.eid = eid;
+      }
+      // 员工中细分为: 教师 管理者 ...
+      function Teacher(name, age, eid) {
+        // show(a,b,c); //调用时有三个参数
+        // 如果用call来修改this指向, 则写法为:
+        // show.call(新的对象, a,b,c)
+        // call(新的this, ...其他参数)
+
+        // 调用时 把Employee的this 换成当前的
+        // new Teacher() 得到的对象  -- 即 亚楠
+        // 所以内容生成的属性 都属于 当前的Teacher 对象
+        Employee.call(this, name, age, eid);
+        // this.name = name;
+        // this.age = age;
+        // this.eid = eid;
+
+        this.category = "教师"; //分类 = 教师
+      }
+      var yanan = new Teacher("亚楠", 19, "110011");
+      console.log(yanan);
+
+      // 员工=>管理者
+      function Manager(name, age, eid) {
+        // 利用员工函数 Employee 生成管理者的 其他通用属性
+
+        // 函数的形式: 对象.函数();  函数的this就是其前面的对象
+        // 下方写法, 相当于是 window.Employee
+        // Employee(name, age, eid); //会导致函数内的this指向window
+        Employee.call(this, name, age, eid);
+
+        this.category = "管理者";
+      }
+      var m = new Manager("文华", 38, "100001");
+      console.log(m);
+    </script>
+  </body>
+</html>

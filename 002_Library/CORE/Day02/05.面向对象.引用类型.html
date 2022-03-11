@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      JS的数据类型有哪些种?  8种
+      基础类型: number string boolean null undefined + bigint symbol
+      对象类型: 1类
+        例如: {} [] Date Math...
+      对象类型 比 基础类型 存储的内容 大的多!
+     -->
+
+    <!-- 对象是引用类型, 基础类型是数值类型 -->
+    <!-- 所有的变量都是存储在内存中 -->
+    <script>
+      var a = 5;
+      var c = a;
+      a = 10;
+      console.log(c); //5
+
+      // 对象类型太大了, 只能放在 专门的 堆内存 中存储
+      // 实际上是把 数组在堆内存中的地址, 赋值给b
+      var b = [123, 324, 234, 234, 435]; //b实际存储的是地址 0x123123
+      var k = b; //k存储就是 0x123123
+      // k 和b 保存的是 对象的地址, 是同一块内存
+      k.push("亮亮"); //修改就是0x123123 中存储的数组
+      console.log(b); //b也是0x123123 就会同时修改
+    </script>
+  </body>
+</html>
