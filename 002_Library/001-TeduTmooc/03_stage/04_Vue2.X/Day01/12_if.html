@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 根据条件 加载dom元素 -->
+    <div id="app">
+      <p>亮哥的分数:{{score}}</p>
+      <!-- :属性名="js代码" -->
+      <button @click="changScore(-1)" :disabled="score==1">-1</button>
+      <button @click="changScore(+1)" :disabled="score==5">+1</button>
+      <!-- 根据分数显示不同的效果 -->
+      <!-- v-if 条件为真 加载元素 条件为假 删除元素 -->
+      <!-- 
+        面试常问：v-show与v-if都可以实现元素的隐藏与显示
+                  差距在哪
+                v-show利用css的display:none实现显示隐藏
+                v-if利用删除或添加dom元素实现隐藏显示
+                推荐v-show 性能高 v-if要删dom性能低不推荐
+       -->
+      <p v-if="score==5">大吉大利，今晚吃鸡</p>
+      <p v-if="score==4">吃糠咽菜，反思人生</p>
+      <p v-if="score<4">领导谈话，回家种地</p>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          score: 3,
+        },
+        methods: {
+          changScore(delta) {
+            this.score += delta
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+    </head>
+    <body>
+        <script>
+            var username = 'rose';
+            // 创建一个ajax函数
+            function ajax(){
+                // 1. 创建异步对象
+                var xhr = new XMLHttpRequest();
+                // 4. 监听等待返回值
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            var result = xhr.responseText;
+                            console.log(result);
+                        };
+                    };
+                };
+                // 2. 设置请求信息
+                xhr.open('DELETE',`/ajaxdel/${username}`,true);
+                // 3. 请求头
+                xhr.send();
+            }; 
+            // 调用ajax函数
+            ajax();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>选择你喜欢的队伍：<b>{{team}}</b></p>
+      <button data-desc="晋级" @click="doChose">FPX</button>
+      <button data-desc="晋级" @click="doChose">EDG</button>
+      <button data-desc="已淘汰" @click="doChose">RNG</button>
+      <button data-desc="已淘汰" @click="doChose">LGD</button>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          team: "待定",
+        },
+        methods: {
+          // 事件点击时 会自动把事件相关内容 作为参数传递给方法
+          doChose(e) {
+            console.log(e)
+            let desc = e.target.dataset.desc
+            let name = e.target.innerHTML
+            this.team = `${name}-${desc}`
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

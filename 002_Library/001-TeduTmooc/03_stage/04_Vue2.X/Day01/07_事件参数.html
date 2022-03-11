@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>选择你最喜欢的英雄：<b>{{hero}}</b></p>
+      <button @click="doChose">烬</button>
+      <button @click="doChose">佐伊</button>
+      <button @click="doChose">拉克丝</button>
+      <button @click="doChose">亚托克斯</button>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      // 创建vue对象 管理id = "app" 元素 hero默认值："待定"
+      new Vue({
+        el: "#app",
+        data: {
+          hero: "待定",
+        },
+        methods: {
+          doChose(event) {
+            // 事件触发时 默认带有参数：事件本身的内容相关
+            // console.log(event)
+            // target 就是触发当前事件的dom元素
+            let name = event.target.innerHTML
+            this.hero = name
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

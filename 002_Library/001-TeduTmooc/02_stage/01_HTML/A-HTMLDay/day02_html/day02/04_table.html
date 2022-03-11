@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style></style>
+</head>
+<body>
+  <!-- 简单的表,没表头的 -->
+  <!-- 不要给tr设置样式 -->
+  <table border="1">
+    <tr>
+      <td>1</td>
+      <td>王科</td>
+      <td>132844878</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>孙一波</td>
+      <td>2134564564</td>
+    </tr>
+  </table>
+  <!-- 含表头的表格 -->
+  <!-- 去掉表格的间隙 style="border-collapse: collapse; -->
+  <table border="1" style="border-collapse: collapse;">
+    <caption>登记表</caption>
+    <!-- 表头 -->
+    <thead>
+      <tr>
+        <th style="width: 60px;">序号</th>
+        <th>姓名</th>
+        <th>电话</th>
+      </tr>
+    </thead>
+    <!-- 表主体 -->
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>王科</td>
+        <td>132844878</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>孙一波</td>
+        <td>2134564564</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 合并行列 -->
+  <table border="1" align="center" style="text-align: center;">
+    <tr>
+      <td colspan="6">讲台</td>
+    </tr>
+    <tr>
+      <td rowspan="3">过道</td>
+      <td width="130">马晓凡</td>
+      <td>炊江北</td>
+      <td>姚杰</td>
+      <td>石锦鹏</td>
+      <td rowspan="3">过道</td>
+    </tr>
+    <tr>
+      <td>马晓凡</td>
+      <td>炊江北</td>
+      <td>姚杰</td>
+      <td>石锦鹏</td>
+    </tr>
+    <tr>
+      <td>马晓凡</td>
+      <td>炊江北</td>
+      <td>姚杰</td>
+      <td>石锦鹏</td>
+    </tr>
+    <tr>
+      <td colspan="6">过道</td>
+    </tr>
+  </table>
+</body>
+</html>

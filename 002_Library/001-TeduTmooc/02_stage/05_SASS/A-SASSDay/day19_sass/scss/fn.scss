@@ -1,0 +1,68 @@
+.d1{
+  content: unquote($string: "hello");
+}
+.d2{
+  content: unquote('lisi');
+}
+// 给字符串增加双引号
+.d3{
+  content: quote(zhangsan);
+}
+.d4{
+  content: quote('lisi');
+}
+// 列表函数
+// length(值) 括号里可以放多个值，空格分开，length可以判断里面值的个数，最后返回一个数字的个数值
+.d5{
+  content: length(200px);
+}
+.d6{
+  content: length(200px 30px "red");
+}
+// 数字函数
+// 四舍五入
+.d7{
+  content: round($number: 4.4);
+}
+.d8{
+  content: round(15.2*0.8);
+}
+// 向上向下取整
+.d9{
+  content: ceil(5.5);
+}
+.d10{
+  content: floor($number: 6.9);
+}
+// 随机数
+.d11{
+  content: random($limit: 5);
+}
+// .d12{
+//   content: max(100,20);
+// }
+// 颜色函数
+.d12{
+  color: rgba(#f54646, 0.6);
+}
+
+// 自定义函数
+@function abc($c){
+  @return ($c+50);
+}
+.d13{
+  width: abc(100px);
+}
+
+@function color($c){
+  @return $c*0.5;
+}
+.d14{
+  width: 100px;
+  height: 100px;
+  background-color: #f54646;
+  &:hover{
+    background-color: color(#f54646);
+  }
+}
+

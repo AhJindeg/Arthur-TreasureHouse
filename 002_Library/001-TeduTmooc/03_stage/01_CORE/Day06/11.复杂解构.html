@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 复杂解构
+      var obj = {
+        skills: ["html", "css", "js"],
+        game: {
+          name: "LOL",
+          price: 9000,
+        },
+      }
+      let {
+        skills: [a, b, c],
+        game: { name: gname, price },
+      } = obj
+      console.log(a, b, c, gname, price)
+      
+    </script>
+  </body>
+</html>

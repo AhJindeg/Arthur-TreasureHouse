@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 声明提升:  其中var就带有声明提升特征
+
+      console.log(a); //没有声明过的变量, 使用会报错!
+      // 变量提升特征: JS文件实际上是执行了两次
+      // 第一次执行: JS引擎会查看整个文件 , 加载所有声明的变量 和 函数
+      var a;
+
+      show();
+
+      function show() {
+        console.log(123123);
+      }
+    </script>
+  </body>
+</html>

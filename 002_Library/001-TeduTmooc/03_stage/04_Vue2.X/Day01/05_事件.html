@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{msg}}</div>
+      <!-- 原生：onclick -->
+      <!-- 与原生区分 使用@代替on -->
+      <button @click="show1">点我1</button>
+      <!-- 旧写法 已淘汰 v-on:click -->
+      <button v-on:click="show1">点我2</button>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      // 语法糖：
+      let a = {
+        desc: function () {},
+        // 可以省略关键词 function 关键词 因为太长了
+        desc1() {},
+      }
+      console.log(a)
+
+      // 声明vue 管理 id="app" 的元素 增加date.msg:666
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          msg: 666,
+        },
+        // methods 官方规定 此属性中书写函数 可以全局到处使用
+        methods: {
+          // 相当于 show1:function(){}
+          show1() {
+            alert(111)
+            // 为msg变量+1
+            // this的指向: 普通函数的this指向运行时所在对象
+            // 此处：要查看真正生成的vue对象结构 msg就是储存在vue对象中的 所以采用this.msg来读取
+            this.msg++
+            // vue精髓 修改数据的时候 会同步更新绑定的dom元素
+            // 具体更新原理属于常考面试题
+          },
+        },
+      })
+
+      console.log(vm) // 查看vue对象的样子
+    </script>
+  </body>
+</html>

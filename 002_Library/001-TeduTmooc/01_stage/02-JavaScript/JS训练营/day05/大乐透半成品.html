@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var reds=[];
+		for(var i=1;i<=35;i++){
+			reds[reds.length]=i;
+		}
+		//console.log(blues);
+		var newReds=[];
+		for(var j=1;j<=5;j++){
+			var n=parseInt(Math.random()*35);
+			newReds[newReds.length]=reds[n];
+		}
+		console.log(newReds);
+	</script>
+</body>
+</html>

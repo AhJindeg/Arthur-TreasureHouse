@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AhJindeg</title>
+  </head>
+  <body>
+    <script>
+      function ajax(method,data){
+      //创建ajax对象
+       const xhr = new XMLHttpRequest();
+      //监听响应对象
+       xhr.onreadystatechange = function(){
+         if(xhr.readyState===4){
+           if(xhr.status>=200&&xhr.status<300){
+            var result = xhr.responseText;
+            console.log(result);
+           };
+         };
+        };
+      //初始化
+        xhr.open(method,'/server',true);
+      //根据不同的请求方式执行不同的方法
+        if(method.toUpperCase()=='POST'){
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.send(data);
+        }
+        if(method.toUpperCase()=='GET'){
+        xhr.send();
+        };
+      };
+      ajax(POST,'names=bob&pwd=333');
+    </script>
+  </body>
+</html>

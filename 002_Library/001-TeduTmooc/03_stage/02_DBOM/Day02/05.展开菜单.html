@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      li {
+        list-style: none;
+      }
+
+      li > span {
+        background: url("./images/add.png") no-repeat center left;
+        padding-left: 1.2em;
+        cursor: pointer;
+      }
+
+      li > ul {
+        display: none;
+      }
+
+      /* 代表开启状态 */
+      .open {
+        background-image: url("./images/minus.png");
+      }
+
+      /* .open 下方的ul 标签, 显示 */
+      .open + ul {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ul.tree>(li>span+ul>li*3)*3 -->
+    <!-- ctrl + i: 弹出提示 -->
+    <ul class="tree">
+      <li>
+        <span class="open">考勤管理</span>
+        <ul>
+          <li>日常考勤</li>
+          <li>请假申请</li>
+          <li>加班/出差</li>
+        </ul>
+      </li>
+      <li>
+        <span>信息中心</span>
+        <ul>
+          <li>通知公告</li>
+          <li>公司新闻</li>
+          <li>规章制度</li>
+        </ul>
+      </li>
+      <li>
+        <span>协同办公</span>
+        <ul>
+          <li>公文流转</li>
+          <li>文件中心</li>
+          <li>内部邮件</li>
+          <li>即时通信</li>
+          <li>短信提醒</li>
+        </ul>
+      </li>
+    </ul>
+
+    <script>
+      // 因为所有的 span 的点击逻辑都一样, 所以应该统一设置
+      let spans = document.querySelectorAll(".tree span")
+      console.log(spans)
+
+      spans.forEach(item => {
+        // 添加点击事件
+        item.onclick = function () {
+          // 手风琴效果: 同一时间只能展开一个!
+          // 两种情况:
+          // 1.点击的是已展开的, 则直接关闭即可
+          if (this.className == "open") {
+            this.className = ""
+            //终止当前函数, 防止执行后续的代码
+            return
+          }
+
+          // 2.点击的是未展开的, 则需要关闭其他展开的项目,
+          // 然后开启当前的
+          if (this.className == "") {
+            // 查找到已开启的
+            let span_open = document.querySelector(".open")
+            // 防止null报错: 如果都折叠起来, 则查找不到 已开启的元素
+            // span_open 就是null, 无法使用.
+            // 所以使用前, 一定要判断元素不是null
+            if (span_open != null) span_open.className = ""
+
+            // 打开自身
+            this.className = "open"
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

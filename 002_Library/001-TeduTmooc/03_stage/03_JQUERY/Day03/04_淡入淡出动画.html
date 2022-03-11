@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box > div {
+        background-color: cadetblue;
+        border: 1px solid gray;
+        padding: 5px;
+        cursor: pointer;
+        user-select: none;
+      }
+      #box > div:last-child {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button>切换</button>
+    <div id="box">
+      <div>点击查看今日菜单</div>
+      <div>
+        <li>KFC</li>
+        <li>黄焖鸡</li>
+        <li>红烧肉</li>
+        <li>r</li>
+        <li>l</li>
+      </div>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 淡入：显示 利用透明度动画出现
+      $("#box>div:eq(0)").click(function () {
+        // fadeIn: 淡入
+        // $(this).next().fadeIn()
+        // 参数1：动画时长 slow fast 毫秒
+        // 参数2：回调函数-完成时触发
+        $(this)
+          .next()
+          .fadeIn(1000, function () {
+            alert("淡入完毕！")
+          })
+      })
+
+      // 淡出：fadeOut - 隐藏
+      $("#div>div:last-child").click(function () {
+        $(this).fadeOut(1000, function () {
+          alert("淡出")
+        })
+      })
+
+      // 切换
+      $("button:eq(0)").click(function (e) {
+        e.preventDefault()
+        $("#box>div:eq(1)").fadeToggle()
+      })
+
+      // 指定透明度
+      // hover(鼠标进入,鼠标移出)
+      $("#box>div:eq(0)").hover(
+        function () {
+          // over
+          // 0.6: 透明度
+          $(this).fadeTo("fast", 0.6)
+        },
+        function () {
+          // out
+          $(this).fadeTo("fast", 1)
+        }
+      )
+    </script>
+  </body>
+</html>

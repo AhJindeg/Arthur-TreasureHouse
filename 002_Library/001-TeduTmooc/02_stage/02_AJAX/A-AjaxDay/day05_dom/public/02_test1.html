@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+        <style>
+            *{margin: 0;}
+        </style>
+    </head>
+    <body>
+        <!-- 有一个方框，宽度200px，高度200px -->
+        <div id="mydiv" style="width: 200px; height: 200px;"></div>
+        <input type="color" id="c">
+        <div id="show"></div>
+        <script>
+            // 先获取id才能控制元素
+            var mydiv = document.getElementById('mydiv');
+            var c = document.getElementById('c');
+            var show = document.getElementById('show');
+            mydiv.style.backgroundColor = "aquamarine";
+            // input变化事件
+            c.oninput = function(){
+                console.log(c.value);
+                mydiv.style.backgroundColor = c.value;
+                // alert(c.value);
+                // 页面输出颜色 在show里面
+                show.innerHTML = c.value;
+            };
+        </script>
+    </body>
+</html>

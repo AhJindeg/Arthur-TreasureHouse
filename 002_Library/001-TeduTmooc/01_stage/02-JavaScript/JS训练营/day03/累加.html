@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			在弹出框中输入一个1-5之间的数字，并计算出1到这个数字之间所有数的和
+		*/
+		var n=Number(prompt('请输入数字：'));
+		var sum=0;
+		switch(n){
+			case 5:
+				sum+=5;//sum=sum+5;
+			case 4:
+				sum+=4;//sum=sum+4;
+			case 3:
+				sum+=3;//sum=sum+3;
+			case 2:
+				sum+=2;//sum=sum+2;
+			case 1:
+				sum+=1;//sum=sum+1;
+		}
+		console.log(sum);
+	</script>
+</body>
+</html>

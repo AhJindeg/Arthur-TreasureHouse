@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//求以下数列(斐波那契数列)中第n个数
+		//1,1,2,3,5,8,13,21,34,55,89,...
+		function fib(n){
+			return n==1||n==2?1:fib(n-1)+fib(n-2);
+		}
+		var result=fib(50);
+		console.log(result);
+
+
+	</script>
+</body>
+</html>

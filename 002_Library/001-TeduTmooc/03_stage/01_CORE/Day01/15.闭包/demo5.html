@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //闭包练习:
+      var name = "全局范围";
+      // 1.声明闭包  2.闭包内声明变量  3.闭包返回一个函数,函数中使用变量 4.用变量存储这个返回的函数
+      var aShow = (function () {
+        var name = "闭包内的name";
+        return function () {
+          console.log(name);
+        };
+      })(); //自调用是为了完成 aShow的赋值过程
+      aShow();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造方式: 适合正则表达式会变化的场景
+      var msg = prompt(
+        "请输入正则表达式, 从: 'ABCDE abcde 132345 亮亮欠我伍佰元!' 中找到你想要的内容"
+      );
+      console.log("msg:", msg);
+      // 把用户录入的正则字符串, 实时封装为 正则对象
+      var reg = new RegExp(msg, "ig");
+      var words = "ABCDE abcde 132345 亮亮欠我伍佰元!";
+      var result = words.match(reg);
+      console.log("结果:", result);
+
+      // \d 数字;  [a-z] 英文    [\u4e00-\u9fa5] 中文
+    </script>
+  </body>
+</html>

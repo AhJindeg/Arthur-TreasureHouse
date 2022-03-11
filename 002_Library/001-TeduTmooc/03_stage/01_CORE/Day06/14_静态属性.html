@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 静态属性：
+      // function Student(name,age){this.name=name;this.age=age;}
+      // Student.prototype.category = "体育生";
+      // new操作，只会更新普通属性的值，不会影响到 原型中的属性
+      class Student {
+        // static 静态属性
+        // 此属性属于类
+        static category = "体育生"
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+      }
+      let c = console.log(Student.category)
+    </script>
+  </body>
+</html>

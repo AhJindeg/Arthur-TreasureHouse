@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 一次性：值的变化只更新一次dom 后续不会修改 -->
+    <div id="app">
+      <h3 v-once>页面显示时间：{{time}}</h3>
+      <h3>当前系统时间：{{time}}</h3>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          time: new Date().toLocaleString(),
+        },
+      })
+      console.log(vm)
+      // 定时器更新时间
+      setInterval(() => {
+        vm.time = new Date().toLocaleString()
+      }, 1000)
+    </script>
+  </body>
+</html>

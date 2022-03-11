@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 利用bom的代码可以检测浏览器安装了哪些拓展 -->
+    <script>
+      console.log(navigator)
+      console.log(navigator.plugins)
+
+      // 判断PDF Viewer
+      if (navigator.plugins["PDF Viewer"]) {
+        document.write("<h3>1</h3>")
+      } else {
+        document.write("<h3>0<h3>")
+      }
+    </script>
+  </body>
+</html>

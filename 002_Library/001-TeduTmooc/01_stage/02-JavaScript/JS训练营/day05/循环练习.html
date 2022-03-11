@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		for(var j=1;j<=5;j++){
+			for(var i=1,str='';i<=5;i++){
+				str+='*';
+			}
+			console.log(str);
+		}
+		*/
+		/*
+		for(var i=1,str='';i<=5;i++){
+			str+='*';
+			console.log(str);
+		}
+		*/
+		/*
+		for(var i=1;i<=5;i++){
+			for(var j=1,str='';j<=i;j++){
+				str+='*';
+			}
+			console.log(str);
+		}
+		*/
+		for(var i=1;i<=9;i++){
+			for(var j=1,str='';j<=i;j++){
+				str+=`${j}*${i}=${i*j}\t`;
+			}
+			console.log(str);
+		}
+
+
+	</script>
+</body>
+</html>

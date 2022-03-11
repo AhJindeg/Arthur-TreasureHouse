@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      Dom的痛点 
+      查询代码复杂 + 选择器书写繁琐 且 需要理清dom元素之间的关系 
+    -->
+    <div id="app">
+      <!-- 
+        {{}}：插值语法 vue规定的格式
+       -->
+      <h2>{{title}}</h2>
+      <div>
+        <div>
+          <div>{{msg}}</div>
+        </div>
+      </div>
+      <h2>{{skill}}</h2>
+    <div>
+      <span>
+        {{word}}
+      </span>
+    </div>
+    <p>
+      <div>
+        <span>
+          <a href="">
+            {{name}}
+          </a>
+        </span>
+      </div>
+    </p>
+    </div>
+    
+
+    <!-- vue.js 开发版 代码错误后台会提示 -->
+    <!-- vue.min.js 生产版 没有错误提示 体量小 适合上线使用 -->
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        // 对象类型中 是vue相关配置项 --- 都是固定名称
+        // el:element元素; 值是选择器; 代表当前vue要管理哪个元素
+        el: "#app",
+        // data: 数据   用途：凡是显示在页面上的数据 都放在此属性中
+        // vue底层会自动搜索el指定元素中 标签内容为{{}}的
+        data: {
+          title: "Hello VUE!",
+          msg: "这是呀！",
+          word: "Nice To meet you!",
+          name: "liangliang",
+          skill: "什么？",
+        },
+      })
+    </script>
+  </body>
+</html>

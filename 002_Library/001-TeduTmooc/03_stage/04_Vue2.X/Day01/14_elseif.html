@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>小亮的分数：{{score}}</p>
+      <button @click="changeScore(-10)" :disabled="score==0">-10</button>
+      <button @click="changeScore(+10)" :disabled="score==100">+10</button>
+      <p v-if="score==100">perfect!</p>
+      <p v-else-if="score>=90">优秀</p>
+      <p v-else-if="score>=80">良好</p>
+      <p v-else-if="score>=60">及格</p>
+      <p v-else>不及格</p>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          score: 60,
+        },
+        methods: {
+          changeScore(delta) {
+            this.score += delta
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			声明一个变量r，用来保存圆的半径，并赋值
+			声明一个变量pi，表示圆周率，并赋值3.14
+			通过r和pi来计算圆的周长，并保存在变量c中
+			通过r和pi来计算圆的面积，并保存在变量s中
+			在控制台输出以下内容：
+				半径为**的圆的周长为**
+				半径为**的圆的面积为**
+		*/
+		var r=5;
+		var pi=3.14;
+		var c=(2*pi*r).toFixed(2);
+		var s=(pi*r**2).toFixed(2);
+		console.log('半径为'+r+'的圆的周长为'+c);
+		console.log('半径为'+r+'的圆的面积为'+s);
+		console.log(`半径为${r}的圆的面积为${s}`); //模板字符串
+		
+	</script>
+</body>
+</html>

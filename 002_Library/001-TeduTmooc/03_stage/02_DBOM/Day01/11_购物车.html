@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>序号</td>
+          <td>名称</td>
+          <td>单价</td>
+          <td>数量</td>
+          <td>总价</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr name="cell">
+          <td>1</td>
+          <td>iphone</td>
+          <td>￥9999</td>
+          <td>
+            <button disabled>-</button>
+            <span>1</span>
+            <button>+</button>
+          </td>
+          <td>￥9999</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // 官方提供了更加简单的查找元素的方法：利用css选择器实现
+      // querySelector:通过选择器查找单个元素
+      let btn_minus = document.querySelector("tbody button:first-child")
+      let span_count = document.querySelector("tbody span")
+      let btn_add = document.querySelector("tbody button:last-child")
+
+      btn_minus.onclick = function () {
+        span_count.innerHTML--
+        this.disabled = span_count.innerHTML == 1
+        updateTotalPrice()
+      }
+      btn_add.onclick = function () {
+        span_count.innerHTML++
+        btn_minus.disabled = false
+        updateTotalPrice()
+      }
+
+      // 更新总价格
+      function updateTotalPrice() {
+        // 读取单价
+        let td_price = document.querySelector("tbody td:nth-child(3)")
+        // 截取字符串 slice
+        let price = td_price.innerHTML.slice(1)
+        let count = span_count.innerHTML
+
+        let td_total_price = document.querySelector("tbody td:last-child")
+        td_total_price.innerHTML = "￥" + count * price
+      }
+    </script>
+  </body>
+</html>

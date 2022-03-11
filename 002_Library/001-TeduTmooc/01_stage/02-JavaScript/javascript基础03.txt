@@ -1,0 +1,90 @@
+一、Math对象
+   不需要创建可以直接使用API
+   PI   圆周率
+   abs()   获取绝对值
+   ceil()   向上取整
+   floor()   向下取整
+   round()   四舍五入取整
+   pow(x,y)   次方次幂
+   max()   获取一组数字最大值
+   min()   获取一组数字最小值
+
+二、Date对象
+   用于日期时间的存储和计算
+
+（1）创建
+   new Date('2021/8/17 11:44:30');
+   new Date(2021,7,17,11,44,30);   // 月份范围+1
+   new Date();   // 存储当前操作系统时间
+   new Date(1541891851641);   // 储存距离计算机元年(1970-1-1 0:0:0 0)的毫秒数
+
+（2）获取
+   getFullYear() / getMonth()+1 / getDate()
+   getHours() / getMinutes() / getSeconds() / getMillisecnds()
+   getDay()   获取星期 0-6 对应 星期日-六
+   getTime()   获取距离计算机元年的毫秒数
+
+（3）转为本地字符串
+   存在兼容性问题，只能用于调试
+   toLocaleString()   // '2021-8-17 15:28:30'
+   toLocaleDateString()   // '2021-8-17'
+   toLocaleTimeString()   // '15:28:30'
+
+（4）设置
+   setFullYear() / setMonth() / setDate()
+   setHours() / setMinutes() / setSeconds() / setMilliseconds()
+   setTime()   设置距离计算机元年毫秒数，会产生一个具体的日期时间
+
+三、Number对象
+   包装对象
+   new Number()   将数值转为数值，返回对象
+   Number()   将数据转为数值，返回是数值
+   toFixed(n)   保留小数点后n位
+   toString()   将数值转为字符串
+
+四、Boolean对象
+   new Boolean()   将数据转为布尔型，返回对象
+   Boolean()   将数据转为布尔型，返回布尔型
+   ！！数据   将数据隐式转换为布尔型
+
+五、错误处理
+（1）常见错误
+   语法错误(SyntaxError)：不符合语法规范，例如出现中文字符，缺少一半括号
+   引用错误(ReferenceError)：使用了未声明的变量
+   类型错误(TypeError)：调用的函数不是一个函数类型
+   范围错误(RangeError)：超出了范围，例如递归无法结束
+   自定义错误：程序员自己指定的错误   throw   错误内容
+
+（2）错误处理
+   出现错误后，不再影响后续代码的执行
+   try{
+      尝试执行，可能会产生错误，即使出现错误，也不影响后续代码执行
+   }catch(err){
+      一旦try出现错误才会执行，将错误保存在err中
+      执行错误处理的代码
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

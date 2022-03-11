@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			在弹出框中输入一个1-9之间的数字，输入几就在控制台输出九九乘法表中的第几行
+			1*1=1
+			1*2=2 2*2=4
+			1*3=3 2*3=6 3*3=9
+			1*4=4 2*4=8 3*4=12 4*4=16
+			...
+		*/
+		var n=prompt('请输入1-9之间的数字：');
+		for(var i=1,str='';i<=n;i++){
+			str+=`${i}*${n}=${i*n}\t`;
+			str+=i+'*'+n+'='+i*n+'\t';
+		}
+		console.log(str);
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 变量作用域: 共有两个位置
+      // 1.全局区域: -- window内部, 公共的
+      // 2.函数区域: -- 函数内部, 私有的
+
+      // 直接在 script 范围中声明的都在公共区域
+      var a = 10;
+
+      function show() {
+        // 函数内部具有自身的作用域
+        // 当一个变量, 在全局区域存在, 函数内部也存在, 则优先使用函数内部的 --- 就近原则
+        var a = 5;
+        console.log(a);
+      }
+
+      show();
+
+      // 作用域链: 就近原则 一层层向上找
+      function show2() {
+        var a = "show2";
+        function show3() {
+          // var a = "show3";
+          function show4() {
+            // var a = "show4";
+            function show5() {
+              // var a = "show5";
+              console.log(a);
+            }
+            show5();
+          }
+          show4();
+        }
+        show3();
+      }
+      show2();
+    </script>
+  </body>
+</html>

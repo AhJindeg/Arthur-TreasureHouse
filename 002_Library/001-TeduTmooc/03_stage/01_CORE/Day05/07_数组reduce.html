@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // reduce:合并,归纳
+      var emps = [
+        { name: "qb", age: 32, married: true, salary: 13000 },
+        { name: "qc", age: 24, married: true, salary: 8000 },
+        { name: "qd", age: 23, married: false, salary: 11000 },
+        { name: "qe", age: 20, married: true, salary: 17000 },
+      ]
+
+      // 计算所有工资总和
+      var sum = 0
+      emps.forEach(function (item) {
+        sum += item.salary
+      })
+      console.log(sum)
+
+      // reduce:
+      // 回调函数: function(合并后的结果,当前元素,序号,当前数组){}
+      // 参数2:sum的初始默认值
+      let result = emps.reduce(function (sum, item, index) {
+        // 返回值是合并后的新的sum值,类似于sum+=item.salary
+        return sum + item.salary
+      }, 0)
+      console.log("result:", result)
+    </script>
+  </body>
+</html>

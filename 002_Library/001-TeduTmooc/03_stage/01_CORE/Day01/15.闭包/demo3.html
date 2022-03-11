@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //最简化的闭包
+      var aa = "AAA";
+      // 目前: 声明了函数 -> 然后调用了一次, 单纯为了触发内部的 aaShow 的赋值
+      // 匿名函数自调用: 可以少声明一个函数 ashow, 节省空间
+      // 闭包的本质: 提供了一个独立的函数作用域
+
+      // aaShow = xxx; //相当于 window.aaShow = xxx
+      var aaShow = (function () {
+        var aa = "AAABBB";
+        // 不应该手动调用window
+        // window.aaShow = function () {
+        return function () {
+          console.log(aa);
+        };
+      })();
+      //此处执行, 是为了激发函数内的代码, 实现aaShow的赋值操作
+      // ashow();
+      aaShow(); // 相当于 window.aaShow()
+    </script>
+  </body>
+</html>

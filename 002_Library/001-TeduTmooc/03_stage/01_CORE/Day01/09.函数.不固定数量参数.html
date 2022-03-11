@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 神奇max方法
+      // 方法: 对象中的函数, 称为方法.
+      console.log(Math.max(12, 3, 4));
+      console.log(Math.max(12, 3, 4, 4, 45, 34534, 345));
+      console.log(Math.max(12, 3, 4, 234, 435, 345));
+
+      function max() {
+        // 函数内部自带一个 arguments 属性, 其中保存了所有传入的参数
+        // console.log("arguments:", arguments);
+        //临时认为 第一个是最大值
+        var num_max = arguments[0];
+
+        for (var i = 0; i < arguments.length; i++) {
+          // 数组下标取值:  arr[0]
+          // console.log(`参数${i}的值${arguments[i]}`);
+          // 如果循环的新值, 比临时最大值大, 则临时最大值易主
+          if (arguments[i] > num_max) {
+            num_max = arguments[i];
+          }
+        }
+
+        return num_max;
+      }
+      // 编程: 把人类的思维 转化成 计算机语言, 然后计算机按照你的思维进行工作!
+
+      console.log(max(12, 3, 34));
+      console.log(max(12, 3, 34, 34, 45));
+      console.log(max(12, 3, 34, 234, 234));
+      console.log(max(12, 3, 34, 345, 546));
+    </script>
+  </body>
+</html>

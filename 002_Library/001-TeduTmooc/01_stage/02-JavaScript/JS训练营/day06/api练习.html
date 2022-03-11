@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//创建数组，包含a~g，每个字母是一个元素，删除de，替换g为z，在下标为1的位置插入m
+		var arr=['a','b','c','d','e','f','g'];
+		arr.splice(3,2);
+		console.log(arr);
+		arr.splice(-1,1,'z');
+		console.log(arr);
+		arr.splice(1,0,'m');
+		console.log(arr);
+	</script>
+</body>
+</html>

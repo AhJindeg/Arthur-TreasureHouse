@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let是用来替代var的, 因为var有变量提升,会导致很多奇怪的bug
+      // let有块级作用域, 没有变量提升 -- 对程序员更友好
+      let cube = {
+        length: 10,
+        width: 20,
+        height: 30,
+        area: function () {
+          let a = this.length * this.width;
+          let b = this.width * this.height;
+          let c = this.length * this.height;
+          return (a + b + c) * 2;
+        },
+        // 计算属性: 等同于函数写法, 只是使用时不需要加()了,格式更简单
+        get volume() {
+          return this.width * this.length * this.height;
+        },
+        get perimeter() {
+          return (this.width + this.length + this.height) * 4;
+        },
+      };
+      // area: 普通的函数写法, 需要用() 来触发!
+      console.log(cube.area());
+      console.log(cube.volume); //计算属性, 不要() 就能使用
+      console.log(cube.perimeter);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style></style>
+</head>
+<body>
+  <!-- 表单标签,里面必须加控件 -->
+  <!-- placeholder属性纯给用户看的,对数据不会有影响 -->
+  <form action="" method="GET">
+    <table border="1" style="border-collapse: collapse;">
+      <caption>注册详细信息表</caption>
+      <tr>
+        <td>用户名:</td>
+        <td><input type="text"></td>
+        <td>文本输入框</td>
+      </tr>
+      <tr>
+        <td>密码:</td>
+        <td><input type="password"></td>
+        <td>密码输入框</td>
+      </tr>
+      <tr>
+        <td>性别:</td>
+        <td>
+          <input type="radio" name="sex" value="0" checked="true">男
+          <input type="radio" name="sex" value="1">女
+        </td>
+        <td>单选框,必要属性name,相同name才能呈现单选效果</td>
+      </tr>
+      <tr>
+        <td>复选框:</td>
+        <td>
+          <input type="checkbox" name="lesson" value="0" checked>HTML <br>
+          <input type="checkbox" name="lesson" value="1">CSS <br>
+          <input type="checkbox" name="lesson" value="2">JavaScript
+        </td>
+        <td>name属性是必要属性,value也是必要属性,最后要获取value值才能知道用户选的是什么</td>
+      </tr>
+      <tr>
+        <td>上传审核文件:</td>
+        <td><input type="file" multiple></td>
+        <td>上传文件(一个,多个multiple)</td>
+      </tr>
+      <tr>
+        <td>选择城市:</td>
+        <td>
+          <select multiple>
+            <option value="0">请选择</option>
+            <option value="101">北京</option>
+            <option value="230">黑龙江</option>
+            <option value="150">内蒙古</option>
+            <option value="430">湖南</option>
+          </select>
+        </td>
+        <td>通过select标签查询value值,可以多选multiple</td>
+      </tr>
+      <tr>
+        <td>年龄:</td>
+        <td>
+          <input type="number" min="18" max="80" step="5">
+        </td>
+        <td>min最小值,max最大值,step跨度</td>
+      </tr>
+      <tr>
+        <td>出生日期:</td>
+        <td><input type="date"></td>
+        <td>选择的日期格式yyyy/mm/dd</td>
+      </tr>
+      <tr>
+        <td>电子邮箱:</td>
+        <td><input type="email"></td>
+        <td>电子邮箱格式会在提交的时候验证,但不严格</td>
+      </tr>
+      <tr>
+        <td>主题颜色</td>
+        <td><input type="color"></td>
+        <td>颜色,通过value值获取颜色的色值</td>
+      </tr>
+      <tr>
+        <td>薪资区间:</td>
+        <td>6000<input type="range" min="6000" max="30000">30000</td>
+        <td>区间选值</td>
+      </tr>
+      <tr>
+        <td>留言板:</td>
+        <td>
+          <textarea style="resize: none;"></textarea>
+        </td>
+        <td>文本域,可以放大或缩小style="resize: none;"就不能放大缩小了</td>
+      </tr>
+      <tr>
+        <td>同意条款:</td>
+        <td>
+          <input type="checkbox" id="yes">
+          <label for="yes">同意以上条款</label>
+        </td>
+        <td>label标记标签,具有特殊的for属性,关联需要元素的id</td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="提交"></td>
+        <td><input type="reset" value="重填"></td>
+        <td><input type="button" value="普通按钮"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 用于操作浏览器相关事件 -->
+
+    <!-- 传统页面跳转 -->
+    <a href="https://bilibili.com" target="_self">click me</a>
+    <br />
+    <br />
+
+    <!-- 通过代码来实现页面的跳转：打开新页面 -->
+    <button onclick="openUrl()">click me</button>
+    <script>
+      // 通过代码来实现页面的跳转：打开新页面
+      function openUrl() {
+        // window.open("https://www.bilibili.com", "_self")
+        //
+        // location: 浏览器的一个事件对象属性，可以直接修改其href
+        location.href = "http://bilibili.com"
+      }
+    </script>
+    <br />
+    <br />
+
+    <!-- 使用场景 -->
+    <button onclick="goHome()">页面走丢了,3秒后为您切换到首页</button>
+    <div id="msg"></div>
+    <script>
+      function goHome() {
+        let count = 3
+        setInterval(() => {
+          msg.innerHTML = `${count}秒后为您跳转...`
+          count--
+          if (count == 0) {
+            location.href = "https://bilibili.com"
+          }
+        }, 1000)
+      }
+    </script>
+  </body>
+</html>

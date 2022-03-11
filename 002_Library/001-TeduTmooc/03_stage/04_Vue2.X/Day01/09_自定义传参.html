@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>数量:{{count}}</p>
+      <!-- 默认@click="changCount(+1) 没有事件参数 -->
+      <!-- 官方提供 $event 添加之后可以获取到事件属性 -->
+      <!-- vue本身是对dom的封装 提倡代码 0 DOM -->
+      <!-- 推荐使用传参方式 -->
+
+      <button data-delta="+1" @click="changCount(+1, $event)">数量+1</button>
+      <button data-delta="-1" @click="changCount(-1, $event)">数量-1</button>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          count: 10,
+        },
+        methods: {
+          // delta 值为+1或-1
+          changCount(delta) {
+            this.count = this.count + delta
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

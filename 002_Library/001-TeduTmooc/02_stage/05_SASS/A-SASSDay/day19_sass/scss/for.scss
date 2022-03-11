@@ -1,0 +1,5 @@
+@for $i from 1 through 5{
+  ul>li:nth-child(#{$i}){
+    background-color: #233;
+  }
+}

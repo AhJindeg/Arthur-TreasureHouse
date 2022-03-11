@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			在弹出框中输入一个年份，保存在变量year中，判断该年是否为闰年，并在控制台给出提示
+				闰年：能被400整除的年份 或者 能被4整除但不能被100整除
+				输出格式如下：
+					**年是闰年
+					**年是平年
+		*/
+		var year=prompt('请输入年份：');
+		var isRun=year%400==0||(year%4==0&&year%100!=0);
+		isRun&&console.log(`${year}年是闰年`);
+		isRun||console.log(`${year}年是平年`);
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.zdy-head {
+  width: 100px;
+  height: 100px;
+}
+/* 需要自定义的就是boot无法提供的 */
+.zdy-top {
+  width: 92%;
+  padding: 100px 0 50px 0;
+}
+.zdy-center {
+  width: 92%;
+  margin: auto;}
+.zdy-list li {
+  line-height: 20px;
+}
+.zdy-foot>div{
+  width: 60%;
+  margin: auto;
+}
+.zdy-wai{
+  padding-bottom: 50px !important;
+}

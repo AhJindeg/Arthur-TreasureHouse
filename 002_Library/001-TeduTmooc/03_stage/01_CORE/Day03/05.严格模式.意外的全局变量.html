@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 严格模式? -->
+    <!-- ES: ECMAScript  -->
+    <!-- ECMA: 欧洲计算机组织--负责制定规则,所有计算机厂商都需要遵循这个规则, 才能互相合作 -->
+    <!-- 标准会逐年更新, 弃用旧特性, 规避风险, 保持语言的先进性 -->
+    <!-- ES3.1 -> ES5 : 没有 ES4修改过于极端,被抛弃了! -->
+
+    <!-- 严格模式: 从ES5(ES 2009)开始推出的新特性, 用来解决旧版本代码中存在的各种风险! -->
+
+    <script>
+      "use strict"; //此代码以下的, 都会进入严格模式
+
+      //风险1: 意外的全局变量创建
+      var servername;
+      // 写错变量名的错误 过于常见
+      // 作者想: 不写var 声明, 也能自动创建变量, 让程序员少写几个字母
+      servrname = "localhost";
+      // servrname is not defined:
+      // 在严格模式下, 就会禁用这种写法, 直接报错
+
+      console.log(servername);
+    </script>
+  </body>
+</html>

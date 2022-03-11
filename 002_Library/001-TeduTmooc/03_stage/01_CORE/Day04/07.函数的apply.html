@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 函数的apply: 同call, 都可以替换函数的this指向, 同时执行函数
+      // 同一个函数:  show(a,b,c);  对象obj
+      // 用call书写: show.call(obj, a,b,c)
+      // 用apply书写: show.apply(obj, [a,b,c])
+      // 特点:  apply(对象, [参数数组..])
+      let obj = { name: "楠楠" };
+
+      function show(a, b, c) {
+        console.log(this.name, a, b, c);
+      }
+
+      show.call(obj, 1, 2, 3);
+      show.apply(obj, [1, 2, 3]);
+    </script>
+  </body>
+</html>

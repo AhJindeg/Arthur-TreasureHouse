@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var uname='李四';
+		function fn(){
+			console.log(uname); //undefined
+			var uname='张三';
+			console.log(uname); //张三
+		}
+		fn();
+	</script>
+</body>
+</html>

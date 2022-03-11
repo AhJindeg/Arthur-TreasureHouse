@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- {{}} 主要是双标签的内容 -->
+      <p>{{imgs[0]}}</p>
+      <!-- 属性用特殊写法 -->
+      <!-- 旧写法 -->
+      <img v-bind:src="imgs[0]" />
+      <!-- 新写法   :属性名="js代码" -->
+      <img :src="imgs[current]" />
+      <button @click="add">下一张</button>
+    </div>
+
+    <script src="../vendor/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          imgs: [
+            "./images/1.jpg",
+            "./images/2.jpg",
+            "./images/3.jpg",
+            "./images/4.jpg",
+          ],
+          current: 0, // 序号
+        },
+        methods: {
+          add() {
+            this.current++
+            // this.current %= 4
+            // 用图片的个数作为取余 可以更加灵活
+            // 数组产生变化时 余数自然变化
+            this.current %= this.imgs.length
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

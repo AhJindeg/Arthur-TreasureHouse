@@ -1,0 +1,25 @@
+@charset "utf-8";
+@import "./1.scss";
+
+.nav {
+  a {
+    list-style: none;
+    color: springgreen;
+  }
+}
+
+$qianhei:#121212;
+$shenhei:#212121;
+$bord: solid;
+$keyi: 10%+20%;
+
+.se {
+  a {
+    color: $qianhei;
+  }
+}
+
+.jia{
+  width: $keyi;
+  border: 2px $bord red;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #setting {
+        border: 1px solid red;
+        display: inline-block;
+      }
+      #setting > div:nth-child(2) {
+        display: inline-block;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: lightyellow;
+        display: none;
+      }
+      #setting > div:nth-child(2) {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="setting">
+      <div>
+        <a href="javascript:;">设置</a>
+      </div>
+      <div>
+        <div>搜索设置</div>
+        <div>高级搜索</div>
+        <div>关闭预测</div>
+        <div>隐私设置</div>
+      </div>
+    </div>
+    <div id="box">
+      <h1>页面内容...</h1>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 1. 鼠标悬浮在设置之上 显示下方内容
+      $("#setting>div:eq(0)>a").mouseover(function () {
+        $("#setting>div:eq(1)").show(100)
+      })
+      // 2. 鼠标离开 整个设置所在空间 显示隐藏内容
+      $("#setting").mouseleave(function () {
+        $("#setting>div:eq(1)").hide(100)
+      })
+      // 3. 显示隐藏会影响到其它元素
+      // 设置绝对定位
+    </script>
+  </body>
+</html>
