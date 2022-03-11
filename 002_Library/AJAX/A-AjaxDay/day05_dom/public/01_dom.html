@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+    </head>
+    <body>
+        <input type="text" id="username">
+        <button id="btn">提交</button>
+        <div id="show"></div>
+        <script>
+            // innerHTML它可以有两个重要作用：
+            // （1）读取元素内容，不是依靠value设置的
+            // js控制html，修改css
+            // 交互需要两件事：
+            // 1. 需要拿到用户输入的内容或进行某种操作
+            // 2. 需要把结果给用户看或者进行某种动作
+            // 第一步需要获取元素
+            var username = document.getElementById('username');
+            var btn = document.getElementById('btn');
+            var show = document.getElementById('show');
+            console.log(username.value);
+            // 第二步需要事件触发再获取用户输入的信息
+            btn.onclick = function(){
+                //             show里的内容
+                // console.log(show.innerHTML);
+                show.innerHTML = '';
+                var unameval = username.value;
+                ajax(unameval);
+            };
+            function ajax(n){
+                // 1. 创建异步对象
+                var xhr = new XMLHttpRequest();
+                // 4. 监听并等待数据返回
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status >= 200 && xhr.status <300){
+                            var result = xhr.responseText;
+                            console.log(result);
+                        };
+                    };
+                };
+                // 2. 设置请求信息
+                xhr.open('GET',`/jh?names=${n}`,true);
+                // 3. 发送请求
+                xhr.send();
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+    </head>
+    <body>
+        <script>
+            // 创建一个ajax函数
+            function ajax(){
+                // 1. 创建异步对象
+                var xhr = new XMLHttpRequest();
+                // 4. 监听并返回值
+                xhr.onreadystatechange = function(){
+                    // 判断readyState==4
+                    if(xhr.readyState == 4){
+                        // 判断状态码
+                        if(xhr.status >= 200 &&　xhr.status < 300){
+                            // 接受返回内容
+                            var result = xhr.responseText;
+                            console.log(result);
+                        };
+                    };
+                };
+                // 2. 设置请求信息
+                xhr.open('POST','/ajaxpost',true);
+                // 3. post方式发送之前必须指定传递参数的数据格式
+                // 设置请求头，先指定请求参数的解析方式再传递数据
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                // 5. 发送请求
+                xhr.send('names=bob&pwd=333');
+            }; 
+            // 调用
+            ajax();
+        </script>
+    </body>
+</html>

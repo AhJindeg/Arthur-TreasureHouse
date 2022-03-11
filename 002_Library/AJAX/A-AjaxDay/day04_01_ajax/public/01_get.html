@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+    </head>
+    <body>
+        <script>
+            // 创建一个自定义函数用于封装ajax的方法，什么使用，什么时候调用就可以了
+            function ajax(){
+                // 1. 创建xhr对象
+                var xhr = new XMLHttpRequest();
+                // 4. 原本直接接收数据，现在通过监听判断readyState的值为4时数据就回来了
+                xhr.onreadystatechange = function(){
+                    console.log(xhr.readyState);
+                    // 判断readyState是4的时候才可以拿到后台的数据
+                    if(xhr.readyState == 4){
+                        // 可以拿到后台数据也不能保证后台不出问题，判断后台内容成功，再进行数据的接收
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            var result = xhr.responseText;
+                            console.log(result);
+                        };
+                    };
+                };
+                // 2. 设置请求信息
+                // grtpar1 传参方式是？的方式，多个参数，每个参数数组需要用&分开
+                xhr.open('GET','/getpar1?names=tom&pwd=123',true);
+                // 3. 发送请求
+                xhr.send();
+            };
+            ajax();
+        </script>
+    </body>
+</html>

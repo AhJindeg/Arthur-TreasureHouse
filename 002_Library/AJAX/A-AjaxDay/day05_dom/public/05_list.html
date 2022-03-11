@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AhJindeg</title>
+    <style>
+      *{
+
+      }
+      body{
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="show"></ul>
+    <script>
+      // 1.获取元素
+      var show = document.getElementById('show');
+      // 2. 调用ajax
+      ajax();
+      // ajax函数 接口地址 /pokelist get方法
+      function ajax(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState == 4){
+            if(xhr.status >= 200 && xhr.status < 300){
+              var result = JSON.parse(xhr.responseText);
+              console.log(result);
+              // 套路
+              showlist(result);
+            };
+          };
+        };
+        xhr.open('GET',`pokelist`,true);
+        xhr.send();
+        function showlist(data){
+          // 套路1：声明一个字符串存入所有内容
+          var str = '';
+          // 套路2：使用for循环遍历参数，参数长度
+          for(var i=0; i<data.length; i++){
+            // 套路3：使用模板字符串写想要输出到页面上的格式内容，通过参数的动态数据循环输入字符串中
+            str += `<li style="float:left; width:14%;">
+              <span style="font-size: 24px;">${data[i].id}号：</span>
+              <span style="font-size: 18px;">${data[i].name}</span>
+              <img src="./poke/${data[i].id}.png" width="150px">
+            </li>`;
+          };
+          console.log(str);
+          // 套路4：将储存所有数据的字符串插入html中
+          show.innerHTML = str;
+        };
+      };
+    </script>
+  </body>
+</html>

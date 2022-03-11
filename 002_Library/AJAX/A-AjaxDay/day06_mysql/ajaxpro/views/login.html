@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+  </head>
+  <body>
+    <div>
+    <h1>管理员登录</h1>
+    <br>
+    <br>
+    <input type="text" placeholder="管理员帐号" name="" id="adminuser">
+    <br>
+    <br>
+    <input type="password" placeholder="管理员密码" name="" id="adminpwd">
+    <br>
+    <br>
+    <button id="btn">登录</button>
+    </div>
+
+    <!-- 脚本 -->
+    <script>
+      // 1. 获取元素[3个]
+      var adminuser = document.getElementById('adminuser');
+      var adminpwd = document.getElementById('adminpwd');
+      var btn = document.getElementById('btn');
+
+      // 2. 事件触发
+      btn.onclick = function(){
+        // 3. 手机用户数据(注意非空)
+        var namesval = adminuser.value.trim();
+        var pwdval = adminpwd.value.trim();
+        // 4. 判断[两个都不为空]
+        if(namesval && pwdval){
+          // 5. 调用ajax,并传参
+          ajax(namesval,pwdval);
+        }else{
+          alert('用户名或密码不能为空');
+        };
+      };
+      // 6. ajax函数
+      function ajax(n,p){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState == 4){
+            if(xhr.status >= 200 && xhr.status < 300){
+              // console.log(xhr.responseText);
+              var result = JSON.parse(xhr.responseText);
+              // console.log(result);
+              if(result.code){
+                alert('登录成功');
+                // 跳转页面
+                window.location.href="./list.html";
+              }else{
+                alert('用户名或者密码错误');
+              };
+            };
+          };
+        };
+        xhr.open('POST','/admin/login',true);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.send(`anames=${n}&apwd=${p}`);
+      };
+      </script>
+  </body>
+</html>

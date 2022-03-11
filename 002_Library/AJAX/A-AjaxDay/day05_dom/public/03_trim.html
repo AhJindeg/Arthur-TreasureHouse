@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AhJindeg</title>
+    </head>
+    <body>
+        <input type="text" id="username">
+        <button id="btn">提交</button>
+        <script>
+            // 套路1获取元素
+            var username = document.getElementById('username');
+            var btn = document.getElementById('btn');
+            // 套路2由元素触发事件
+            btn.onclick = function(){
+                // 套路3收取用户传递的值
+                // .trim()去除字符串的前后空格，只有空格就会为空字符串
+                var unameval = username.value.trim();
+                console.log(unameval);
+                if(unameval){
+                    // 不是空，执行ajax函数
+                    ajax(unameval);
+                }else{
+                    alert('用户名不能为空');
+                };
+            };
+            // ajax函数
+            function ajax(i){
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status >= 200 && xhr.status > 300){
+                            var result = xhr.responseText;
+                            console.log(result);
+                            // 对象形式的字符串!!!
+                            var datajson = JSON.parse(result);
+                            // 转换之后会把对象形式的字符串转为真的对象
+                            console.log(datajson);
+                        };
+                    };
+                };
+                xhr.open('GET',`/poker?id=${i}`,true);
+                xhr.send();
+            };
+        </script>   
+    </body>
+</html>
