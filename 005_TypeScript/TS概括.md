@@ -577,11 +577,3 @@ export default defineComponent({
 
 <style scoped></style>
 ```
-
-## 总结
-
-- vue 的项目希望能够在休息时间多做几次
-
-- 关于面试: 必须恶补面试题, 基本上 周二 周三 晚 6:40 ~ 8:30 补充, 会录视频
-
-- 本周六晚 会上传 VUE 部分的总结, 到时可以到 FTP 关注下, Vue 文件夹中新增的 PDF 文件
