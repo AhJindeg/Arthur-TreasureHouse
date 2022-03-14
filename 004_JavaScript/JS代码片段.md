@@ -1,6 +1,6 @@
 # `数组` `去重`
 
-- 使用 JavaScript 中的 `Set` 轻松删除重复项
+- 使用 JavaScript 中的 `Set` 轻松删除重复
 
 ```
 const removeDuplicates = (arr) => [...new Set(arr)];
