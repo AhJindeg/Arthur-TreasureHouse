@@ -1,7 +1,0 @@
-@mixin btn($num){
-  // content:$num;
-}
-
-.btn1{
-  @include btn(1);
-}
