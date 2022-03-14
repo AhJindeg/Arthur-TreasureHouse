@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 常见对象 -->
+    <script>
+      // 数组对象: 一个特殊的对象
+      // 特点: 自动为每个元素分配属性名, 从0开始
+      // 数组中都是数字下标的: 称为 索引数组
+      var skills = ["js", "node.js", "express", "css"];
+      //               0    1          2           3
+
+      console.log(skills);
+      // 通过下标可以取值
+      console.log(skills[1]);
+      // 如果读取不存在的值, 返回undefined
+      console.log(skills[5]);
+
+      // 关联数组: 属性名可以不叫1 2 3 4... 自己起名字
+      skills["teacher"] = "亮亮";
+      console.log(skills);
+      console.log(skills["teacher"], skills.teacher);
+
+      // 普通对象: 所有属性名都需要自己分配
+      var eric = {
+        name: "Eric",
+        age: 29,
+        phone: "10086",
+        desc: function () {
+          console.log("我是Eric!");
+        },
+      };
+      console.log(eric.name, eric.age, eric.phone);
+      eric.desc();
+    </script>
+  </body>
+</html>

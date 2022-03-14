@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>60</li>
+      <li>80</li>
+      <li>77</li>
+      <li>22</li>
+      <li>55</li>
+    </ul>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 回顾forEach
+      let name = ["mary", "lily", "john"]
+      name.forEach((item, index) => {
+        console.log("index:", index)
+        console.log("item:", item)
+      })
+
+      // jq提供了遍历选择器得到的元素方法：each((序号，元素)=>{})
+      $("li").each((index, item) => {
+        console.log(index, item)
+        // 要求：内容>=60 绿色 否则红色
+        // 转化为jq对象
+        let $item = $(item)
+        if ($item.html() >= 60) {
+          $item.css("color", "green")
+        } else {
+          $item.css("color", "red")
+        }
+      })
+    </script>
+  </body>
+</html>

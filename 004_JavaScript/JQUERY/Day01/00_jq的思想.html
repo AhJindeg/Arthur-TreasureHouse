@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>1</button>
+    <button>2</button>
+    <script>
+      // 查找按钮 点击后 被点击按钮变红
+      let btns = document.querySelectorAll("button")
+      btns.forEach(item => {
+        item.onclick = function () {
+          this.style.color = "red"
+        }
+      })
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++
+      // 封装：
+      function Query(selector) {
+        // 参数selector：用户传入的css选择器代码
+        // 利用选择器查找代码
+        this.elements = document.querySelectorAll(selector)
+      }
+      // 为构造函数的原型 添加方法
+      // callback: 接受一个回调函数
+      Query.prototype.click = function (callback) {
+        this.elements.forEach(item => (item.onclick = callback))
+      }
+
+      // 查找所有button
+      new Query("button").click(function () {
+        this.style.color = "blue"
+      })
+
+      function $(selector) {
+        return new Query(selector)
+      }
+      $("button").click(function () {
+        this.style.color = "yellow"
+      })
+    </script>
+  </body>
+</html>

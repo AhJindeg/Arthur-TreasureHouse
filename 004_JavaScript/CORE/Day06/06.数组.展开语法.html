@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 展开数组
+      var nums = [11, 22, 33, 44]
+
+      // 希望获取一个新的数组
+      var nums2 = nums
+      nums2.push(55)
+
+      console.log(nums)
+
+      // ...数组: 可以去掉数组的[] 包围
+      // 把数组展开, 依次存放到新数组里
+      var nums3 = [...nums, 66]
+      console.log("nums3:", nums3)
+      console.log("nums:", nums)
+
+      var names = ["lily", "john", "tom"]
+      var names1 = ["亮亮", "亚楠", "铭铭"]
+      //合并两个数组, 得到新数组
+      var names2 = [...names, ...names1]
+      console.log(names2)
+    </script>
+  </body>
+</html>

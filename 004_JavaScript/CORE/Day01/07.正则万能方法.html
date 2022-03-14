@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 正则万能方法 exec
+      // 之前所有学到的正则方法 本质上都是利用 exec 方法 封装出来的
+      var words = "ABCDEFGHIJKLMN";
+
+      // 两位英文
+      var reg = /([a-z])([a-z])/gi;
+      // exec: 正则对象的, 对字符串参数使用 正则的方法
+      var result = reg.exec(words); //同字符串的match方法
+      console.log(result);
+      // exec: 是分解操作.. 在全局匹配模式下, 每调用一次, 就会向下查找一次.
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      var result = reg.exec(words);
+      console.log(result);
+
+      // 同样的代码, 多次反复执行: 用循环
+      // 循环语句分两种: for  while
+      // for: 执行固定次数的循环
+      // while: 执行不固定次数的循环   while(true){}
+
+      // 此处在正则匹配之前, 并不知道有多少个符合条件的, 所以用while循环更合适.
+      // while 分两种写法:   while(){}    do{}while()
+      // do..while.. 不论条件真假, 都会先执行一次
+      // 当前场景: 先匹配一次 再决定要不要继续匹配, 适合do..while
+      // exec() 返回值是null  代表匹配到结尾
+
+      var reg = /[a-z]{3}/gi; //匹配3个英文
+
+      do {
+        // exec() 返回值是null  代表匹配到结尾
+        var result = reg.exec(words);
+        console.log("匹配结果:", result);
+        // 最常见报错: null 空指针
+        // 当使用一个对象之前, 一定要确保对象不是 null
+        if (result != null) {
+          console.log(`在序号${result["index"]}找到了${result[0]}`);
+        }
+        // 如果结果不是null, 说明还可以继续匹配
+      } while (result != null);
+
+      // 使用场景: 当想要封装一个类似于 match test replace 具有特定功能的正则方法, 其中底层使用的就是exec
+    </script>
+  </body>
+</html>

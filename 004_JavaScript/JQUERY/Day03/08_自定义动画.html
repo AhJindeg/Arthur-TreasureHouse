@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        padding: 30px;
+        background-color: beige;
+        display: inline-block;
+        /* 重要：页面上的普通元素理论不能随便移动位置 会影响到周边元素 */
+        /* 应该把元素改为定位方式 */
+        position: relative;
+        /* relative: 相对于当前位置进行调整 */
+      }
+    </style>
+  </head>
+  <body>
+    <button>开始动画001</button>
+    <button>开始动画002</button>
+    <div id="box">
+      <h1>Hello Animation</h1>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $("button:eq(0)").click(function (e) {
+        e.preventDefault()
+        // animate(动画修改样式，动画时长，回调函数)
+        $("#box").animate({ top: "100px", "border-radius": "50%" }, 2000)
+      })
+
+      // 往复
+      $("button:eq(1)").click(function (e) {
+        e.preventDefault()
+        // 添加多个动画会依次执行
+        $("#box").animate({ top: "20px" }, "fast")
+        $("#box").animate({ top: "0" }, "fast")
+        $("#box").animate({ top: "20px" }, "fast")
+        $("#box").animate({ top: "0" }, "fast")
+      })
+
+      // 练习: 当鼠标悬浮在 id="box" 的元素上 元素左右快速晃动几次
+      // 晃动的同时, 透明度也发生变化 ： opacity属性
+      $("#box").mouseover(function () {
+        $("#box").animate({ top: "200px", opacity: 0.5 }, "fast")
+        $("#box").animate({ left: "200px", opacity: 1 }, "fast")
+        $("#box").animate({ top: 0, opacity: 1 }, "fast")
+        $("#box").animate({ left: 0, opacity: 1 }, "fast")
+      })
+
+      // 停止动画
+      $("#box").mouseleave(function () {
+        // stop: 停止动画
+        $(this).stop(true)
+      })
+    </script>
+  </body>
+</html>

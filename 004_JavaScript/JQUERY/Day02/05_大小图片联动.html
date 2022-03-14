@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div:nth-child(1) {
+        width: 800px;
+        margin: auto;
+      }
+      div:nth-child(3) {
+        width: 900px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="./img/1-l.jpg" width="100%" alt="" srcset="" />
+    </div>
+    <hr />
+    <div>
+      <img src="./img/1.jpg" data-big="./img/1-l.jpg" width="24%" alt="" />
+      <img src="./img/2.jpg" data-big="./img/2-l.jpg" width="24%" alt="" />
+      <img src="./img/3.jpg" data-big="./img/3-l.jpg" width="24%" alt="" />
+      <img src="./img/4.jpg" data-big="./img/4-l.jpg" width="24%" alt="" />
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $("div:eq(1)>img").mouseover(function () {
+        //   // attr: 读取自定义属性
+        //   let big_img = $(this).attr("data-big")
+        //   // 设置到大图
+        //   $("div:eq(0)>img").prop("src", big_img)
+
+        // 使用正则替换：把 .jpg 换成 -l.jpg
+        let src = $(this).prop("src")
+        src = src.replace(/\.jpg/, "-l.jpg")
+        $("div:eq(0)>img").prop("src", src)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 作用域: scope
+      // 闭包: closure
+      // 闭包是JS独有的
+      // JS函数的特殊设计 -- 函数在声明时会保存其所在的词法环境
+      window.aShow = function () {};
+      // 在公共区域声明的 变量/函数 都会自动存储在 window 中
+
+      function xxx() {
+        var name = "222";
+        function bbb() {
+          var age = 33;
+          window.aaShow = function () {
+            console.log(name, age);
+          };
+        }
+        bbb();
+      }
+      xxx(); //调用才能触发函数体内容的执行
+      aaShow();
+    </script>
+  </body>
+</html>

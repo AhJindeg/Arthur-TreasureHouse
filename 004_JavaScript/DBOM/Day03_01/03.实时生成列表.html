@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="news"></ul>
+
+    <script>
+      // 场景: 新闻页面的 最新消息列表,  其中内容应该实时变化
+      // 做法1: 修改静态html页面, 上传到服务器..  -- 耗时,不应该
+      // 做法2: 消息存储在服务器, 页面显示时 自动通过网络请求 从服务器获取最新消息, 实时更新到本地!
+      let news = [
+        { title: "震惊! 亮亮今天早上竟然做了这种事!", href: "xxxx" },
+        { title: "震惊! 亚楠中午竟然要吃亮亮??", href: "xxxx" },
+        { title: "震惊! 铭铭在第四阶段做了什么?", href: "xxxx" },
+        { title: "震惊! 为什么天天在震惊!", href: "xxxx" },
+      ]
+      // 循环, 生成 <li><a href='xxx'>xxxxx</a></li> 添加到ul里
+      news.forEach(item => {
+        let a = document.createElement("a")
+        a.href = item.href
+        a.innerHTML = item.title
+
+        let li = document.createElement("li")
+        li.appendChild(a)
+
+        // 由于上方数组叫 news , 跟 id='news' 重名了, 所以覆盖了
+        // 必须在这里重新读,  此处是 函数作用域, 同名变量没关系
+        let news = document.getElementById("news")
+        news.appendChild(li)
+      })
+    </script>
+  </body>
+</html>

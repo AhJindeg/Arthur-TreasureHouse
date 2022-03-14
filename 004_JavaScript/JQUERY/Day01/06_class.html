@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .danger {
+        width: 200px;
+        background-color: red;
+        border-radius: 4px;
+        text-align: center;
+        padding: 10px 0;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button>添加样式</button>
+    <button>删除样式</button>
+    <button>切换样式</button>
+    <button>判断是否存在danger样式</button>
+
+    <div id="box">Welcome to 2107</div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 缩写：eq(n) 序号从0开始数
+      // $('button:nth-child(1)')
+      $btn0 = $("button:eq(0)")
+      console.log($btn0)
+      // 为 id="box" 的元素添加 danger 样式class
+      $btn0.click(function () {
+        $("#box").addClass("danger") // jqclass
+      })
+
+      // jqclick
+      $("button:eq(1)").click(function (e) {
+        e.preventDefault()
+        $("#box").removeClass("danger")
+      })
+
+      $("button:eq(3)").click(function (e) {
+        e.preventDefault()
+        alert($("#box").hasClass("danger") ? "存在" : "不存在")
+      })
+    </script>
+  </body>
+</html>

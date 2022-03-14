@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #score > span {
+        display: inline-block;
+        background-color: lightgray;
+        margin: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+      #score .checked {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>亮亮本周的评分：</span>
+      <b>*</b>
+    </div>
+    <div id="score">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 鼠标进入时 添加checked样式类
+      $("#score").on("mouseenter", "span", function () {
+        // 冒泡写法：鼠标进入时 span标签触发
+        $(this).addClass("checked")
+        $(this).prevAll().addClass("checked")
+        $(this).nextAll().removeClass("checked")
+        // 获取当前触发事件的元素 是父元素中的哪一个
+        let i = $("#score>span").index($(this))
+        // 设置到分数中
+        $("b").html(i + 1)
+      })
+    </script>
+  </body>
+</html>

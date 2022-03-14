@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造函数的原型
+      // 对象是 构造函数制造的: 构造函数在制造对象的时候, 默认会把一个原型注入到 对象中
+      function Teacher(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      // 构造函数自带原型对象, 默认是Object
+      // 为了区分原型所在位置: 构造函数中叫prototype, 对象中叫 __proto__
+      console.log("构造函数的原型对象:", Teacher.prototype);
+
+      var t1 = new Teacher("亮亮", 10);
+      console.log(t1);
+      console.log("对象中的__proto__", t1.__proto__);
+
+      // 对象的__proto__ 就是 构造的prototype  位置不同 名称不同而已
+      console.log(t1.__proto__ == Teacher.prototype); //true
+    </script>
+  </body>
+</html>

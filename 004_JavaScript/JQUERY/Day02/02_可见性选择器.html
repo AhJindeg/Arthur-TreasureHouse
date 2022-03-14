@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      HTML的元素可以隐藏 
+      隐藏方式有一下两种：
+      - display: none 移除 不占位
+      - 表单元素input 带有type="hidden"写法 效果与display: none相同
+      - opacity: 0 透明为0 占位
+      - visibility: hidden 透明 隐藏占位
+
+      此处的不可见元素选择器 只能选择第一种 display: none
+    -->
+
+    <div id="box">
+      <div style="display: none">111111</div>
+      <div style="display: none">111111</div>
+      <div style="visibility: hidden">121212</div>
+      <div style="opacity: 0">131313</div>
+      <input type="hidden" />
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 选择器：选择隐藏的dom元素 -- 仅限display:none 的
+      // 包含 input 的 type="none"
+      console.log($("#box>*:hidden"))
+      // 可以省略*
+      console.log($("#box>:hidden"))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 模板字符串
+
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // 早期字符串合并
+      var name = "亮亮"
+      var age = 20
+      var words = name + "今年" + age + "岁!"
+      console.log(words)
+
+      // ES6 2015年新增 模板字符串:``
+      var words = `${name}今年${age}岁!`
+      console.log(words)
+
+      // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // 模板字符串可以更加便捷的实现多行字符串
+      var msg = "锄禾日当午,\n汗滴禾下土" // 利用\n换行符实现换行
+      console.log(msg)
+
+      var msgs = `锄禾日当午,
+      汗滴禾下土`
+      console.log(msgs)
+
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // 模板字符串中的${}支持js中各种没有{}的语法
+      // 不支持: if for while ...
+      console.log(`${5 + 3} ${true ? "k" : "y"} ${"lily".toUpperCase()}`)
+
+      // +++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // 模板字符串 输入`符号 需要转义字符 \`
+      console.log()
+    </script>
+  </body>
+</html>

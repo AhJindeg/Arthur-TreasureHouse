@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 以后声明尽量使用let
+
+      // let: 块级作用域
+      // 旧版本中,需要利用函数来制造 闭包作用域,来储存变量防止全局污染
+      // {}就是声明块级作用域的方式
+      let name = "全局区域"
+      {
+        // 临时生成一个独立的代码块,块级作用域
+        let name = "亮亮"
+      }
+
+      {
+        let name = "亮亮"
+        window.ashow = function () {
+          console.log(name)
+        }
+      }
+      ashow()
+
+      // 注意事项:{}是块级作用域,在同一作用域内,let无法声明同名变量,加{}
+      switch (1) {
+        case 1: {
+          let x = "11"
+          break
+        }
+        case 2: {
+          let x = "22"
+          break
+        }
+        default:
+          break
+      }
+    </script>
+  </body>
+</html>

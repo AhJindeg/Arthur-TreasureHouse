@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 2px solid grey;
+        padding: 10px;
+        width: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="d1">
+      d1
+      <div id="d2">
+        d2
+        <div id="d3">
+          d3
+          <div id="d4">
+            d4
+            <div id="d5">hello world</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // parent: 父母
+      // 选择 id="d5" 的元素的父元素
+      // 由于css没有选择父元素的选择器 所以jq提供了专门的方法来实现
+      $("#d5").parent().css("border-color", "blue")
+
+      // 所有的祖辈元素 +s
+      $("#d5").parents().css("border-color", "orange")
+
+      // 选择在当前元素和指定元素之间的所有祖辈
+      $("#d5").parentsUntil("#d2").css("border-color", "green")
+    </script>
+  </body>
+</html>

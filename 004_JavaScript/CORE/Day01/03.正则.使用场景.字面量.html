@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 字面量方式: 适合 正则不变  内容变
+      // 让用户输入一段内容, 来判断是否有中文!
+      var msg = prompt("请输入一段内容:");
+      var reg = /[\u4e00-\u9fa5]/;
+      // 如果找不到匹配的项目, 则返回null
+      var result = msg.match(reg);
+      console.log("用户录入的信息: ", msg);
+      console.log("查询结果:", result);
+      // 结果为null 说明没找到中文
+      if (result == null) {
+        console.log("密码格式正确!");
+      } else {
+        console.log("密码不允许有中文!");
+      }
+    </script>
+  </body>
+</html>

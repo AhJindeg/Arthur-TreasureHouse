@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 按住shift键, 就可以输出大写
+      // 2. 键盘 logic的薄膜挺好用.. 推荐闲鱼->mx keys
+      // 3. 关于字体,有专门的编程字体: __
+      // 4. 对象类型是引用类型,  对比的是地址
+      var a = {};
+      var b = {};
+      console.log(a == b); //false  看似一样,实际是两块不同的内存地址
+
+      // 5. 函数是对象类型
+      // 函数的本质:  new Function()
+      var c = function () {}; //这是字面量写法
+      var d = function () {};
+      console.log(c == d);
+
+      function Teacher(name, age) {
+        this.name = name;
+        this.age = age;
+
+        // 不用此写法, 因为每次 new 都会执行, 重新覆盖 浪费性能
+        this.__proto__.intro = function () {
+          return `${this.name}-${this.age}`;
+        };
+      }
+      new Teacher();
+      new Teacher();
+      new Teacher();
+      new Teacher();
+
+      Teacher.prototype.intro = function () {
+        return `${this.name}-${this.age}`;
+      };
+    </script>
+  </body>
+</html>

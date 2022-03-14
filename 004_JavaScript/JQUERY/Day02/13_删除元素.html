@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul style="border: 1px solid red">
+      <li>010</li>
+      <li>121</li>
+      <li>232</li>
+      <li>343</li>
+    </ul>
+    <button>删除</button>
+    <button>清空</button>
+
+    <script src="../vendor/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $("button:eq(0)").click(function (e) {
+        // 删除ul中的最后一个元素
+        // last: 最后一个
+        // remove(): 删除元素
+        $("ul>li").last().remove()
+      })
+
+      $("button:eq(1)").click(function (e) {
+        // 阻止事件冒泡
+        e.preventDefault()
+
+        // empty: 清空
+        $("ul").empty()
+      })
+      
+    </script>
+  </body>
+</html>

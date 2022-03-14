@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var words = "abcd 123456";
+
+      //查找数字:  元字符 \d 代表数字
+      // 转义符: 字符串中有些特殊含义的字符组合
+      var a = '双引号是"';
+      // 转义符会把特殊字符进行转义, 非特殊字符 则显示本身
+
+      // "\d": 会被转义成 d
+      // "\\d": 才会转义成 \d
+      var reg = new RegExp("\\d", "ig");
+      console.log(words.match(reg));
+    </script>
+  </body>
+</html>

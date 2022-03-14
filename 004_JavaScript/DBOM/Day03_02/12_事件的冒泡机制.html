@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        background-color: red;
+        width: 280px;
+        height: 200px;
+      }
+      .green {
+        background-color: green;
+        width: 150px;
+        height: 150px;
+      }
+      .blue {
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 事件的冒泡机制: 当点击一个子元素的时候 他的所有父元素都可以感受的到事件发生 顺序按照就近原则 -->
+    <div class="red">
+      <div class="green">
+        <div class="blue"></div>
+      </div>
+    </div>
+
+    <script>
+      let div_red = document.getElementsByClassName("red")[0]
+      let div_green = document.getElementsByClassName("green")[0]
+      let div_blue = document.getElementsByClassName("blue")[0]
+
+      div_red.onclick = function () {
+        console.log("red 被点击")
+      }
+      // 事件函数在触发时 会默认接受事件本身作为参数
+      div_green.onclick = function () {
+        console.log("green 被点击", event)
+        // stopPropagation:停止冒泡事件
+        event.stopPropagation()
+      }
+      div_blue.onclick = function () {
+        console.log("blue 被点击")
+      }
+    </script>
+  </body>
+</html>

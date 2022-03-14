@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>欢迎来到 Express 服务器！</h1>
+
+    <script src="./jquery-3.6.0.min.js"></script>
+
+    <script>
+      // 请求 /names 接口数据
+      $.get(
+        "http://localhost:3000/names",
+        "",
+        function (data, textStatus, jqXHR) {
+          console.log(data)
+          data.forEach(item => {
+            $("body").append(`<li>${item}</li>`)
+          })
+        }
+      )
+    </script>
+  </body>
+</html>
