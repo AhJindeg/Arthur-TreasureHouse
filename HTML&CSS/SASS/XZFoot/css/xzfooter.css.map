@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAIQ,iDAAE;EACA,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;AAEb,8DAAiB;EACf,SAAS,EAAE,IAAI",
-"sources": ["../scss/xzfooter.scss"],
-"names": [],
-"file": "xzfooter.css"
-}
