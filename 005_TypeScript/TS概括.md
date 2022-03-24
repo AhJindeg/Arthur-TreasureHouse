@@ -3,7 +3,7 @@
 > 今日内容:
 >
 > - vue 项目-详情页
-> - typescript 语言 -- 融合更多 JAVA 特征的 JS
+> - typescript 语言 -- 融合 JAVA 特征的 JS
 > - vue3 语法
 
 ## 昨日重要内容回顾
