@@ -29,14 +29,14 @@
         // 点击和拖拽触发
         move(e) {
           // params
-          console.log(e, "e")
+          // console.log(e, "e")
           // 获取元素html
           let odiv = e.target
           // 算出鼠标相对元素的位置
           let disX = e.clientX - odiv.offsetLeft
           let disY = e.clientY - odiv.offsetTop
-          console.log(disX, "disX")
-          console.log(disY, "disY")
+          // console.log(disX, "disX")
+          // console.log(disY, "disY")
 
           document.onmousemove = e => {
             // 鼠标按下并移动的事件
@@ -44,11 +44,12 @@
 
             let left = e.clientX - disX
             let top = e.clientY - disY
-            console.log(left, "left")
-            console.log(top, "top")
+            // console.log(left, "left")
+            // console.log(top, "top")
             // 绑定元素位置到positionX和positionY上面
             this.positionX = top
             this.positionY = left
+            console.log(this.positionX)
 
             // 移动当前元素
             // 根据定位的 relative ，控制 left 和 top 的像素

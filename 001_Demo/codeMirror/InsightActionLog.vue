@@ -4,11 +4,26 @@
       <Row v-show="openSearch" @keydown.enter.native="handleSearch">
         <Form ref="searchForm" :model="searchForm" inline :label-width="80" label-colon=" :">
           <FormItem label="主键ID" prop="id">
-            <Input type="text" v-model="searchForm.id" placeholder="请输入主键ID" clearable style="width: 200px" />
+            <Input
+              type="text"
+              v-model="searchForm.id"
+              placeholder="请输入主键ID"
+              clearable
+              style="width: 200px"
+            />
           </FormItem>
           <FormItem label="操作类型" prop="action">
-            <Select v-model="searchForm.action" placeholder="请选择操作类型" clearable style="width: 200px">
-              <Option v-for="item in actionTypeList" :key="item.id" :value="item.action">{{ item.action }}</Option>
+            <Select
+              v-model="searchForm.action"
+              placeholder="请选择操作类型"
+              clearable
+              style="width: 200px"
+            >
+              <Option
+                v-for="item in actionTypeList"
+                :key="item.id"
+                :value="item.action"
+              >{{ item.action }}</Option>
             </Select>
           </FormItem>
           <FormItem label="成功标志" prop="stat">
@@ -55,7 +70,8 @@
         </div>
       </Row>
       <Alert show-icon v-show="openTip">
-        已选择 <span class="select-count">{{ selectList.length }}</span> 项
+        已选择
+        <span class="select-count">{{ selectList.length }}</span> 项
         <a class="select-clear" @click="clearSelectAll">清空</a>
       </Alert>
       <Table
@@ -91,7 +107,13 @@
         </template>
       </Drawer>
     </Card>
-    <Modal :title="modalTitle" v-model="modalVisible" :mask-closable="false" :width="800" footer-hide="true">
+    <Modal
+      :title="modalTitle"
+      v-model="modalVisible"
+      :mask-closable="false"
+      :width="800"
+      footer-hide="true"
+    >
       <Form
         ref="form"
         :model="form"
@@ -121,9 +143,15 @@
       <!-- <div slot="footer">
         <Button type="text" @click="modalVisible = false">取消</Button>
         <Button type="primary" :loading="submitLoading" @click="handleSubmit">提交</Button>
-      </div> -->
+      </div>-->
     </Modal>
-    <Modal title="故障信息" v-model="showFaultData" :mask-closable="false" :width="1111" footer-hide="true">
+    <Modal
+      title="故障信息"
+      v-model="showFaultData"
+      :mask-closable="false"
+      :width="1111"
+      footer-hide="true"
+    >
       <codemirror v-model="faultData" :options="cmOption" />
     </Modal>
   </div>

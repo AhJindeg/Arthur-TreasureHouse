@@ -1,0 +1,8 @@
+https://www.cnblogs.com/Renyi-Fan/p/9270140.html
+
+target属性的值是发生事件的那个元素，currentTarget是绑定事件的那个元素，相当于this
+
+你给哪个元素设置了事件监听，event.currentTarget始终返回的就是哪个元素
+
+event.target 触发该事件的 DOM 元素。
+event.currentTarget 在事件冒泡阶段中的当前DOM元素,等同于'this'
