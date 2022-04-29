@@ -1,0 +1,68 @@
+      options: {
+        shortcuts: [
+          {
+            text: "今日",
+            value() {
+              const start = new Date(new Date(new Date().toLocaleDateString()).getTime())
+              const end = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1)
+              return [start, end]
+            },
+          },
+          {
+            text: "昨日",
+            value() {
+              const start = new Date(new Date(new Date().toLocaleDateString()).getTime() - 24 * 60 * 60 * 1000)
+              const end = new Date(new Date(new Date().toLocaleDateString()).getTime() - 1)
+              return [start, end]
+            },
+          },
+          {
+            text: "本周",
+            value() {
+              let date = new Date()
+              date.setDate(date.getDate() - date.getDay() + 1)
+              let start = new Date(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate())
+              date.setDate(date.getDate() + 6)
+              let end = new Date(
+                new Date(new Date(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()).toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1
+              )
+              return [start, end]
+            },
+          },
+          {
+            text: "上周",
+            value() {
+              let date = new Date()
+              date.setDate(date.getDate() - 7 - date.getDay() + 1)
+              let start = new Date(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate())
+              date.setDate(date.getDate() + 6)
+              let end = new Date(
+                new Date(new Date(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()).toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1
+              )
+              return [start, end]
+            },
+          },
+          {
+            text: "本月",
+            value() {
+              let date = new Date()
+              let y = date.getFullYear()
+              let m = date.getMonth()
+              let start = new Date(y, m, 1)
+              let end = new Date(new Date(new Date(y, m + 1, 0).toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1)
+              return [start, end]
+            },
+          },
+          {
+            text: "上月",
+            value() {
+              let date = new Date()
+              let y = date.getFullYear()
+              let m = date.getMonth()
+              let start = new Date(y, m - 1, 1)
+              let end = new Date(new Date(new Date(y, m, 0).toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1)
+              return [start, end]
+            },
+          },
+        ],
+      },

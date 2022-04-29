@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>frameSelect</title>
+    <style>
+      .fileDiv {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin: 24px;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 100px;
+      }
+      .selected {
+        border: 1px solid red;
+        color: red;
+      }
+    </style>
+
+    <script>
+      ;(function () {
+        document.onmousedown = function () {
+          var selList = []
+          // getElementByTagName返回带有指定标签名的对象的集合
+          var fileNodes = document.getElementsByTagName("div")
+          for (var i = 0; i < fileNodes.length; i++) {
+            // 返回数组中某个指定的元素位置
+            if (fileNodes[i].className.indexOf("fileDiv") != -1) {
+              fileNodes[i].className = "fileDiv"
+              selList.push(fileNodes[i])
+            }
+            console.log(selList)
+            // 指定的
+          }
+          var isSelect = true
+          // 获取事件触发后的event对象，做了一个兼容性处理
+          var evt = window.event || arguments[0]
+          // 存放鼠标点击初始位置
+          var startX = evt.x || evt.clientX
+          var startY = evt.y || evt.clientY
+
+          // 创建一个框选元素
+          var selDiv = document.createElement("div")
+          // 给框选元素添加CSS样式，使用决定定位
+          selDiv.style.cssText =
+            "position:absolute; width:0px; height:0px; font-size:0px; margin:0px; padding:0px; border:1px dashed #0099FF; z-index:1000; filter:alpha(opacity:60); opacity:0.6; display:none"
+          // 添加ID
+          selDiv.id = "selectDiv"
+          // appendChild()向节点添加最后一个子节点
+          document.body.appendChild(selDiv)
+          // 根据起始位置，添加定位
+          selDiv.style.left = startX + "px"
+          selDiv.style.top = startY + "px"
+
+          // 根据坐标给选框修改样式
+          var _x = null
+          var _y = null
+          clearEventBubble(evt)
+          // 移动鼠标
+          document.onmousemove = function () {
+            evt = window.event || arguments[0]
+            if (isSelect) {
+              if (selDiv.style.display == "none") {
+                selDiv.style.display = ""
+              }
+              // 获取当前鼠标位置
+              _x = evt.x || evt.clientX
+              _y = evt.y || evt.clientY
+              selDiv.style.left = Math.min(_x, startX) + "px"
+              selDiv.style.top = Math.min(_y, startY) + "px"
+              selDiv.style.width = Math.abs(_x - startX) + "px" //Math.abs()返回数的绝对值
+              selDiv.style.height = Math.abs(_y - startY) + "px"
+
+              // *******************************************************************************
+              // 获取参数
+              var _l = selDiv.offsetLeft
+              var _t = selDiv.offsetTop
+              var _w = selDiv.offsetWidth
+              var _h = selDiv.offsetHeight
+              for (var i = 0; i < selList.length; i++) {
+                var sl = selList[i].offsetWidth + selList[i].offsetLeft
+                var st = selList[i].offsetHeight + selList[i].offsetTop
+
+                if (sl > _l && st > _t && selList[i].offsetLeft < _l + _w && selList[i].offsetTop < _t + _h) {
+                  // 该DOM元素被选中，进行处理
+                  // indexOf()可返回某个指定的字符串值在字符串中首次出现的位置
+                  if (selList[i].className.indexOf(" selected") == -1) {
+                    selList[i].className = selList[i].className + " selected"
+                  }
+                } else {
+                  if (selList[i].className.indexOf(" selected") != -1) {
+                    selList[i].className = "fileDiv"
+                  }
+                }
+              }
+            }
+            clearEventBubble(evt)
+          }
+
+          // 放开鼠标，选框消失
+          document.onmouseup = function () {
+            isSelect = false
+            if (selDiv) {
+              document.body.removeChild(selDiv)
+            }
+
+            ;(selList = null), (_x = null), (_y = null), (selDiv = null), (startX = null), (startY = null), (evt = null)
+          }
+        }
+      })()
+
+      function clearEventBubble(evt) {
+        // stopPropagation()不再派发事件。终止事件在传播过程的捕获、目标处理或起跑阶段进一步传播
+        if (evt.stopPropagation) evt.stopPropagation()
+        else evt.cancelBubble = true // 阻止该事件的进一步冒泡
+        if (evt.preventDefault) evt.preventDefault() // 取消事件的默认动作
+        else evt.returnValue = false
+      }
+    </script>
+  </head>
+  <body>
+    <div class="fileDiv">file1</div>
+    <div class="fileDiv">file2</div>
+    <div class="fileDiv">file3</div>
+    <div class="fileDiv">file4</div>
+    <div class="fileDiv">file5</div>
+    <div class="fileDiv">flie6</div>
+    <div class="fileDiv">file7</div>
+    <div class="fileDiv">file8</div>
+  </body>
+</html>
