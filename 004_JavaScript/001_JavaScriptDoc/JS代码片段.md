@@ -1,3 +1,13 @@
+# 去除 `末尾空白` 数组
+
+```
+for(let x = this.arr.length -1; x >= 0; x--){
+	if(this.arr[x] == null || this.arr[x] == undefined){
+		this.arr.splice(x,1)
+	}
+}
+```
+
 # `数组` `去重`
 
 - 使用 JavaScript 中的 `Set` 轻松删除重复
