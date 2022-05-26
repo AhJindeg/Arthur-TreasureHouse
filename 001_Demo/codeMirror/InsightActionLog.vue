@@ -4,26 +4,11 @@
       <Row v-show="openSearch" @keydown.enter.native="handleSearch">
         <Form ref="searchForm" :model="searchForm" inline :label-width="80" label-colon=" :">
           <FormItem label="主键ID" prop="id">
-            <Input
-              type="text"
-              v-model="searchForm.id"
-              placeholder="请输入主键ID"
-              clearable
-              style="width: 200px"
-            />
+            <Input type="text" v-model="searchForm.id" placeholder="请输入主键ID" clearable style="width: 200px" />
           </FormItem>
           <FormItem label="操作类型" prop="action">
-            <Select
-              v-model="searchForm.action"
-              placeholder="请选择操作类型"
-              clearable
-              style="width: 200px"
-            >
-              <Option
-                v-for="item in actionTypeList"
-                :key="item.id"
-                :value="item.action"
-              >{{ item.action }}</Option>
+            <Select v-model="searchForm.action" placeholder="请选择操作类型" clearable style="width: 200px">
+              <Option v-for="item in actionTypeList" :key="item.id" :value="item.action">{{ item.action }}</Option>
             </Select>
           </FormItem>
           <FormItem label="成功标志" prop="stat">
@@ -107,23 +92,8 @@
         </template>
       </Drawer>
     </Card>
-    <Modal
-      :title="modalTitle"
-      v-model="modalVisible"
-      :mask-closable="false"
-      :width="800"
-      footer-hide="true"
-    >
-      <Form
-        ref="form"
-        :model="form"
-        :rules="formValidate"
-        :label-width="100"
-        label-position="right"
-        show-message="false"
-        label-colon=" :"
-        class="detail"
-      >
+    <Modal :title="modalTitle" v-model="modalVisible" :mask-closable="false" :width="800" footer-hide="true">
+      <Form ref="form" :model="form" :rules="formValidate" :label-width="100" label-position="right" show-message="false" label-colon=" :" class="detail">
         <FormItem label="主键ID" prop="id">
           <Input v-model="form.id" readonly />
         </FormItem>
@@ -145,54 +115,42 @@
         <Button type="primary" :loading="submitLoading" @click="handleSubmit">提交</Button>
       </div>-->
     </Modal>
-    <Modal
-      title="故障信息"
-      v-model="showFaultData"
-      :mask-closable="false"
-      :width="1111"
-      footer-hide="true"
-    >
+    <Modal title="故障信息" v-model="showFaultData" :mask-closable="false" :width="1111" footer-hide="true">
       <codemirror v-model="faultData" :options="cmOption" />
     </Modal>
   </div>
 </template>
 
 <script>
-import dedent from "dedent"
-import { codemirror } from "vue-codemirror"
+import dedent from 'dedent'
+import { codemirror } from 'vue-codemirror'
 // import base style
-import "codemirror/lib/codemirror.css"
+import 'codemirror/lib/codemirror.css'
 // language
-import "codemirror/mode/python/python.js"
+import 'codemirror/mode/python/python.js'
 // import "codemirror/mode/javascript/javascript"
 // theme css
 // import "codemirror/theme/base16-light.css"
-import "codemirror/theme/ambiance.css"
+import 'codemirror/theme/ambiance.css'
 // require active-line.js
-import "codemirror/addon/selection/active-line.js"
+import 'codemirror/addon/selection/active-line.js'
 // closebrackets
-import "codemirror/addon/edit/closebrackets.js"
+import 'codemirror/addon/edit/closebrackets.js'
 // keyMap
-import "codemirror/mode/clike/clike.js"
-import "codemirror/addon/edit/matchbrackets.js"
-import "codemirror/addon/comment/comment.js"
-import "codemirror/addon/dialog/dialog.js"
-import "codemirror/addon/dialog/dialog.css"
-import "codemirror/addon/search/searchcursor.js"
-import "codemirror/addon/search/search.js"
-import "codemirror/keymap/emacs.js"
+import 'codemirror/mode/clike/clike.js'
+import 'codemirror/addon/edit/matchbrackets.js'
+import 'codemirror/addon/comment/comment.js'
+import 'codemirror/addon/dialog/dialog.js'
+import 'codemirror/addon/dialog/dialog.css'
+import 'codemirror/addon/search/searchcursor.js'
+import 'codemirror/addon/search/search.js'
+import 'codemirror/keymap/emacs.js'
 
 // 根据你的实际请求api.js位置路径修改
-import {
-  getInsightActionLogList,
-  addInsightActionLog,
-  editInsightActionLog,
-  deleteInsightActionLog,
-  getActionType,
-} from "@/api/interface"
-import { shortcuts } from "@/libs/shortcuts"
+import { getInsightActionLogList, addInsightActionLog, editInsightActionLog, deleteInsightActionLog, getActionType } from '@/api/interface'
+import { shortcuts } from '@/libs/shortcuts'
 export default {
-  name: "insightActionLog",
+  name: 'insightActionLog',
   components: {
     codemirror,
   },
@@ -204,44 +162,44 @@ export default {
         styleActiveLine: true,
         lineNumbers: true,
         line: true,
-        mode: "text/x-python",
+        mode: 'text/x-python',
         // mode: "text/javascript",
-        theme: "ambiance",
-        keyMap: "emacs",
+        theme: 'ambiance',
+        keyMap: 'emacs',
       },
       // 显示故障信息
       showFaultData: false,
       // 故障信息
-      faultData: "",
+      faultData: '',
       // 操作类型
       actionTypeList: [],
       // 添加显示 info
       showInfo: false,
       // 详情数据
-      formDetail: "",
-      tableSize: "default",
+      formDetail: '',
+      tableSize: 'default',
       openSearch: true, // 显示搜索
       openTip: false, // 显示提示
       loading: true, // 表单加载状态
       modalType: 0, // 添加或编辑标识
       modalVisible: false, // 添加或编辑显示
-      modalTitle: "", // 添加或编辑标题
+      modalTitle: '', // 添加或编辑标题
       searchForm: {
         // 搜索框初始化对象
         pageNumber: 1, // 当前页数
         pageSize: 10, // 页面大小
-        sort: "createTime", // 默认排序字段
-        order: "desc", // 默认排序方式
+        sort: 'createTime', // 默认排序字段
+        order: 'desc', // 默认排序方式
       },
       form: {
         // 添加或编辑表单对象初始化数据
-        id: "",
-        action: "",
-        stat: "",
-        utime: "",
-        errmsg: "",
-        except: "",
-        counter: "",
+        id: '',
+        action: '',
+        stat: '',
+        utime: '',
+        errmsg: '',
+        except: '',
+        counter: '',
       },
       // 表单验证规则
       formValidate: {},
@@ -250,9 +208,9 @@ export default {
       columns: [
         // 表头
         {
-          type: "selection",
+          type: 'selection',
           width: 60,
-          align: "center",
+          align: 'center',
         },
         // {
         //   type: "index",
@@ -260,45 +218,45 @@ export default {
         //   align: "center",
         // },
         {
-          title: "主键ID",
-          key: "id",
+          title: '主键ID',
+          key: 'id',
           minWidth: 200,
           sortable: true,
         },
         {
-          title: "操作类型",
-          key: "action",
+          title: '操作类型',
+          key: 'action',
           minWidth: 150,
           sortable: false,
         },
         {
-          title: "成功标志",
-          key: "statText",
+          title: '成功标志',
+          key: 'statText',
           minWidth: 150,
           sortable: false,
         },
         {
-          title: "处理耗时 (ms)",
-          key: "utime",
+          title: '处理耗时 (ms)',
+          key: 'utime',
           minWidth: 120,
           sortable: true,
         },
         {
-          title: "处理结果",
-          key: "errmsg",
+          title: '处理结果',
+          key: 'errmsg',
           minWidth: 220,
           sortable: false,
           tooltip: true,
         },
         {
-          title: "操作",
-          key: "action",
-          align: "center",
+          title: '操作',
+          key: 'action',
+          align: 'center',
           width: 300,
           render: (h, params) => {
-            return h("div", [
+            return h('div', [
               h(
-                "a",
+                'a',
                 {
                   on: {
                     click: () => {
@@ -306,15 +264,15 @@ export default {
                     },
                   },
                 },
-                "当前计数器"
+                '当前计数器'
               ),
-              h("Divider", {
+              h('Divider', {
                 props: {
-                  type: "vertical",
+                  type: 'vertical',
                 },
               }),
               h(
-                "a",
+                'a',
                 {
                   on: {
                     click: () => {
@@ -322,15 +280,15 @@ export default {
                     },
                   },
                 },
-                "故障信息"
+                '故障信息'
               ),
-              h("Divider", {
+              h('Divider', {
                 props: {
-                  type: "vertical",
+                  type: 'vertical',
                 },
               }),
               h(
-                "a",
+                'a',
                 {
                   on: {
                     click: () => {
@@ -338,15 +296,15 @@ export default {
                     },
                   },
                 },
-                "详情"
+                '详情'
               ),
-              h("Divider", {
+              h('Divider', {
                 props: {
-                  type: "vertical",
+                  type: 'vertical',
                 },
               }),
               h(
-                "a",
+                'a',
                 {
                   on: {
                     click: () => {
@@ -354,7 +312,7 @@ export default {
                     },
                   },
                 },
-                "删除"
+                '删除'
               ),
             ])
           },
@@ -372,7 +330,7 @@ export default {
     },
     // 获取全部操作类型
     getActionTypeList() {
-      getActionType().then(res => {
+      getActionType().then((res) => {
         if (res.success) {
           this.actionTypeList = res.result
         }
@@ -411,8 +369,8 @@ export default {
     changeSort(e) {
       this.searchForm.sort = e.key
       this.searchForm.order = e.order
-      if (e.order === "normal") {
-        this.searchForm.order = ""
+      if (e.order === 'normal') {
+        this.searchForm.order = ''
       }
       this.getDataList()
     },
@@ -427,16 +385,16 @@ export default {
     },
     exportData() {
       this.$refs.table.exportCsv({
-        filename: "数据",
+        filename: '数据',
       })
     },
     getDataList() {
       this.loading = true
-      getInsightActionLogList(this.searchForm).then(res => {
+      getInsightActionLogList(this.searchForm).then((res) => {
         this.loading = false
         if (res.success) {
-          res.result.content.forEach(item => {
-            item.statText = item.stat == 1 ? "成功" : "失败"
+          res.result.content.forEach((item) => {
+            item.statText = item.stat == 1 ? '成功' : '失败'
           })
           this.data = res.result.content
           this.total = res.result.totalElements
@@ -448,26 +406,26 @@ export default {
       })
     },
     handleSubmit() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate((valid) => {
         if (valid) {
           this.submitLoading = true
           if (this.modalType === 0) {
             // 添加 避免编辑后传入id等数据 记得删除
             delete this.form.id
-            addInsightActionLog(this.form).then(res => {
+            addInsightActionLog(this.form).then((res) => {
               this.submitLoading = false
               if (res.success) {
-                this.$Message.success("操作成功")
+                this.$Message.success('操作成功')
                 this.getDataList()
                 this.modalVisible = false
               }
             })
           } else {
             // 编辑
-            editInsightActionLog(this.form).then(res => {
+            editInsightActionLog(this.form).then((res) => {
               this.submitLoading = false
               if (res.success) {
-                this.$Message.success("操作成功")
+                this.$Message.success('操作成功')
                 this.getDataList()
                 this.modalVisible = false
               }
@@ -478,19 +436,19 @@ export default {
     },
     add() {
       this.modalType = 0
-      this.modalTitle = "添加"
+      this.modalTitle = '添加'
       this.$refs.form.resetFields()
       delete this.form.id
       this.modalVisible = true
     },
     edit(v) {
       this.modalType = 1
-      this.modalTitle = "详情"
+      this.modalTitle = '详情'
       this.$refs.form.resetFields()
       // 转换null为""
       for (let attr in v) {
         if (v[attr] === null) {
-          v[attr] = ""
+          v[attr] = ''
         }
       }
       let str = JSON.stringify(v)
@@ -500,16 +458,16 @@ export default {
     },
     remove(v) {
       this.$Modal.confirm({
-        title: "确认删除",
+        title: '确认删除',
         // 记得确认修改此处
-        content: "您确认要删除该条数据?",
+        content: '您确认要删除该条数据?',
         loading: true,
         onOk: () => {
           // 删除
-          deleteInsightActionLog({ ids: v.id }).then(res => {
+          deleteInsightActionLog({ ids: v.id }).then((res) => {
             this.$Modal.remove()
             if (res.success) {
-              this.$Message.success("操作成功")
+              this.$Message.success('操作成功')
               this.clearSelectAll()
               this.getDataList()
             }
@@ -519,24 +477,24 @@ export default {
     },
     delAll() {
       if (this.selectList.length <= 0) {
-        this.$Message.warning("您还未选择要删除的数据")
+        this.$Message.warning('您还未选择要删除的数据')
         return
       }
       this.$Modal.confirm({
-        title: "确认删除",
-        content: "您确认要删除所选的 " + this.selectList.length + " 条数据?",
+        title: '确认删除',
+        content: '您确认要删除所选的 ' + this.selectList.length + ' 条数据?',
         loading: true,
         onOk: () => {
-          let ids = ""
+          let ids = ''
           this.selectList.forEach(function (e) {
-            ids += e.id + ","
+            ids += e.id + ','
           })
           ids = ids.substring(0, ids.length - 1)
           // 批量删除
-          deleteInsightActionLog({ ids: ids }).then(res => {
+          deleteInsightActionLog({ ids: ids }).then((res) => {
             this.$Modal.remove()
             if (res.success) {
-              this.$Message.success("操作成功")
+              this.$Message.success('操作成功')
               this.clearSelectAll()
               this.getDataList()
             }
@@ -552,7 +510,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "@/styles/table-common.less";
+@import '@/styles/table-common.less';
 /deep/ .cm-s-ambiance.CodeMirror,
 .cm-s-ambiance .CodeMirror-gutters {
   height: 600px;
