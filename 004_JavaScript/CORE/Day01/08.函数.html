@@ -11,62 +11,62 @@
       // 函数: 函数就是把一大段重复的代码, 封装在{}中, 起个名字.  之后通过名字来调用这个大段代码.
 
       // 计算 1 - 100 的总和
-      var sum = 0;
+      var sum = 0
       for (var i = 1; i <= 100; i++) {
-        sum += i;
+        sum += i
       }
-      console.log(sum); //5050
+      console.log(sum) //5050
 
       // 场景: 如果计算 1-200, 则需要大段复制, 只修改 100-> 200 即可
-      var sum = 0;
+      var sum = 0
       for (var i = 1; i <= 200; i++) {
-        sum += i;
+        sum += i
       }
-      console.log(sum); //5050
+      console.log(sum) //5050
 
       // 场景: 如果计算 1-300, 则需要大段复制, 只修改 100-> 300 即可
-      var sum = 0;
+      var sum = 0
       for (var i = 1; i <= 300; i++) {
-        sum += i;
+        sum += i
       }
-      console.log(sum); //5050
+      console.log(sum) //5050
 
       // 利用函数封装: 把代码放 {} 里, 然后起个名字
       function getSum() {
-        var sum = 0;
+        var sum = 0
         for (var i = 1; i <= 100; i++) {
-          sum += i;
+          sum += i
         }
-        return sum; //返回结果给调用者
+        return sum //返回结果给调用者
       }
       // 通过 函数名(); 就可以多次使用{}中的代码
-      console.log(getSum());
-      console.log(getSum());
+      console.log(getSum())
+      console.log(getSum())
 
       // 参数: 函数的参数,可以传递变化量
       function getSum1(end) {
         //参数称为形参--形式参数
-        var sum = 0;
+        var sum = 0
         for (var i = 1; i <= end; i++) {
-          sum += i;
+          sum += i
         }
-        return sum; //返回结果给调用者
+        return sum //返回结果给调用者
       }
-      console.log(getSum1(200)); //200 是实参 -> 实际参数
-      console.log(getSum1(300));
-      console.log(getSum1(400));
+      console.log(getSum1(200)) //200 是实参 -> 实际参数
+      console.log(getSum1(300))
+      console.log(getSum1(400))
 
       // 多个参数
       function getSum2(start, end) {
-        var sum = 0;
+        var sum = 0
         for (var i = start; i <= end; i++) {
-          sum += i;
+          sum += i
         }
-        return sum;
+        return sum
       }
 
-      console.log(getSum2(1, 100));
-      console.log(getSum2(40, 100));
+      console.log(getSum2(1, 100))
+      console.log(getSum2(40, 100))
     </script>
   </body>
 </html>
