@@ -81,3 +81,19 @@ function show2() {
   show3()
 }
 show2()
+
+// 变量提升
+var n = 10
+function outer() {
+  // var n; 会被提升到这里
+  function inner() {
+    function center() {
+      console.log(n)
+    }
+    center()
+  }
+  inner()
+  var n = 15
+}
+outer() // 猜猜打印的是什么?
+// 输出：undefined
