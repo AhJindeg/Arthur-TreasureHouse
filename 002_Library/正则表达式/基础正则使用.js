@@ -47,3 +47,14 @@ let resultE = phoneE.replace(regE, '$1******$3')
 
 // 正则万能方法 exec
 // 上面的正则方法 本质上都是利用 exec 方法 封装出来的
+
+// 正则构造的坑
+var words = 'abcd 123456'
+// 查找数字:  元字符 \d 代表数字
+// 转义符: 字符串中有些特殊含义的字符组合
+var a = '双引号是"'
+// 转义符会把特殊字符进行转义, 非特殊字符 则显示本身
+// "\d": 会被转义成 d
+// "\\d": 才会转义成 \d
+var reg = new RegExp('\\d', 'ig')
+console.log(words.match(reg))

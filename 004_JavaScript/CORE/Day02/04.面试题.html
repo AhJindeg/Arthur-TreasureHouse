@@ -8,19 +8,19 @@
   </head>
   <body>
     <script>
-      var n = 10;
+      var n = 10
       function outer() {
         // var n; 会被提升到这里
         function inner() {
           function center() {
-            console.log(n);
+            console.log(n)
           }
-          center();
+          center()
         }
-        inner();
-        var n = 15;
+        inner()
+        var n = 15
       }
-      outer(); // 猜猜打印的是什么?
+      outer() // 猜猜打印的是什么?
     </script>
   </body>
 </html>
