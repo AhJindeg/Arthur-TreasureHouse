@@ -125,3 +125,43 @@ Array.prototype.sum = function () {
   return total
 }
 console.log(nums.sum())
+
+/**
+ * 为对象替换原型
+ * 直接修改 __proto__ 的指向, 效率比较低
+ * 系统提供了专门替换对象原型的函数: setPrototypeOf(A,B)
+ * 把参数1 的 proto 换成 参数2
+ * setPrototypeOf(对象, 原型):  只会影响修改的对象, 不会影响构造函数, 之后创建的对象没有变更
+ */
+function ObjectA(name, age) {
+  this.name = name
+  this.age = age
+}
+let replaceObjectA = new ObjectA('王大猛', 18)
+console.log(replaceObjectA)
+let replaceObjectB = {
+  money: 999,
+  houses: 888,
+}
+Object.setPrototypeOf(replaceObjectA, replaceObjectB)
+console.log(replaceObjectA)
+
+/**
+ * 替换构造函数的原型
+ * 构造函数原型变化, 会影响所有生成的对象
+ */
+function ConstructA(name, age) {
+  this.name = name
+  this.age = age
+}
+ConstructA.prototype.firstname = '成'
+ConstructA.prototype.intro = function () {
+  console.log(`大家好,我是${this.firstname + this.name}`)
+}
+//替换构造函数的prototype
+ConstructA.prototype = {
+  firstname: '王',
+  intro: function () {
+    console.log(`${this.name}: 我爸姓${this.firstname}`)
+  },
+}

@@ -56,3 +56,71 @@ function clone(old_obj) {
   return new_obj //返回新对象
 }
 let xx = clone(aa)
+
+/**
+ * 配置对象属性 defineProperty
+ * 对象的每个属性, 额外有几个选项: 可写, 可配置, 可遍历
+ * 参数1: 要修改的对象
+ * 参数2: 要修改的属性名, 必须是字符串格式
+ * 参数3: 要修改的具体配置
+ */
+let objectA = {
+  id: 1024,
+  name: 大猛,
+  age: 18,
+}
+Object.defineProperty(objectA, 'id', {
+  writable: false, // 是否可写
+  configurable: false, //是否可重新配置
+  enumerable: false, //是否可遍历
+})
+
+/**
+ * 添加对象属性
+ * 新增id属性, 默认值 1001, 不可写 不可重新配置 不可遍历
+ * 默认值：value
+ */
+var objectB = {
+  name: '亮亮',
+  age: 33,
+}
+Object.defineProperty(objectB, 'id', {
+  value: 1001, //默认值
+  writable: false,
+  configurable: false,
+  enumerable: false,
+})
+console.log(objectB)
+
+/**
+ * 配置多个对象属性
+ * id不可修改, 配置不可改
+ * 新增 name属性, 默认值:大猛, 不可修改,配置不可改
+ * 薪资 salary属性 默认值9999, 不能改 不能配置 不能遍历
+ */
+let objectC = {
+  id: 100,
+}
+Object.defineProperties(objectC, {
+  id: { writable: false, configurable: false },
+  // 用 此方式添加新的属性, 所有的默认值都是false
+  name: {
+    value: '大猛',
+    // 默认值是false, 所以下方两行可以不写, 效果也一样!
+    writable: false,
+    configurable: false,
+    // 如果不主动声明 可以遍历, 则默认是不可遍历
+    enumerable: true,
+  },
+  salary: {
+    value: 9999,
+    writable: false,
+    configurable: false,
+    enumerable: false,
+  },
+})
+console.log(objectC)
+for (var name in objectC) {
+  console.log(name) //salary 不可遍历, 不可见
+}
+objectC.id = 2222
