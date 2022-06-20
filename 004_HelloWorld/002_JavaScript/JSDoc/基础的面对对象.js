@@ -8,9 +8,9 @@
 
 // 普通对象: 所有属性名都需要自己分配
 var eric = {
-  name: 'Eric',
+  name: '大猛',
   desc: function () {
-    console.log('我是Eric!')
+    console.log('我是王大猛!')
   },
 }
 console.log(eric.name)
@@ -24,7 +24,7 @@ eric.desc()
  */
 // 要先声明是 [] or {}
 let skills = []
-skills['teacher'] = '亮亮'
+skills['teacher'] = '猛'
 console.log(skills)
 console.log(skills['teacher'], skills.teacher)
 
@@ -66,7 +66,7 @@ let xx = clone(aa)
  */
 let objectA = {
   id: 1024,
-  name: 大猛,
+  name: '大猛',
   age: 18,
 }
 Object.defineProperty(objectA, 'id', {
@@ -81,7 +81,7 @@ Object.defineProperty(objectA, 'id', {
  * 默认值：value
  */
 var objectB = {
-  name: '亮亮',
+  name: '猛猛',
   age: 33,
 }
 Object.defineProperty(objectB, 'id', {
