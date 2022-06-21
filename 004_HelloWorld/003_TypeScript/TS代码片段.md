@@ -1,3 +1,29 @@
+# **TypeScript 构造函数简写**
+
+通过 TypeScript 中的构造函数创建一个类并为类属性赋值有一个简写。使用此方法时，TypeScript 会自动创建和设置类属性。
+
+这个速记是 TypeScript 独有的，在 JavaScript 类定义中不可用。
+
+```typescript
+// Longhand
+class Person {
+  private name: string
+  public age: int
+  protected hobbies: string[]
+
+  constructor(name: string, age: int, hobbies: string[]) {
+    this.name = name
+    this.age = age
+    this.hobbies = hobbies
+  }
+}
+
+// Shorthand
+class Person {
+  constructor(private name: string, public age: int, protected hobbies: string[]) {}
+}
+```
+
 # **等待特定的时间量（以毫秒为单位）**
 
 ```typescript
